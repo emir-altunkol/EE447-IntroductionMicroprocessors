@@ -11,7 +11,7 @@
 ;***************************************************************
 ;LABEL      DIRECTIVE   VALUE       COMMENT
 OFFSET      EQU         0x10
-FIRST       EQU         0x20000400  
+FIRST       EQU         0x20000700  
 ;***************************************************************
 ; Directives - This Data Section is part of the code
 ; It is in the read only section  so values cannot be changed.
@@ -19,7 +19,7 @@ FIRST       EQU         0x20000400
 ;LABEL      DIRECTIVE   VALUE       COMMENT
             AREA        sdata, DATA, READONLY
             THUMB
-CTR1        DCB         0x10
+CTR1        DCB         0x10				
 MSG         DCB         "Copying table..."
             DCB         0x0D
             DCB         0x04
@@ -38,20 +38,23 @@ start       MOV         R0,#0
             LDR         R2,=CTR1
             LDRB        R2,[R2]
 loop1       STRB        R0,[R1]
-            ADD         R0,R0,#1
             ADD         R1,R1,#1    ; Store table
+			STRB        R0,[R1]
+            ADD         R0,R0,#1
+			ADD         R1,R1,#1
             SUBS        R2,R2,#1
             BNE         loop1
             LDR         R0,=MSG
             BL          OutStr      ; Copy message
             LDR         R1,=FIRST
-            MOV         R2,#0x10
+            MOV         R2,#0x20
 loop2       LDRB        R0,[R1]
-            STRB        R0,[R1,#OFFSET]
+            STRB        R0,[R1,#OFFSET*2]
             ADD         R1,R1,#1    ; Copy table
             SUBS        R2,R2,#1
             BNE         loop2
-            B           start
+            B           start	
+
 ;***************************************************************
 ; End of the program  section
 ;***************************************************************

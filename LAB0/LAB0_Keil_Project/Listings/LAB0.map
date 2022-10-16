@@ -8,10 +8,12 @@ Section Cross References
     startup.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup.o(RESET) refers to startup.o(STACK) for StackMem
-    startup.o(RESET) refers to practicelab.o(main) for __main
+    startup.o(RESET) refers to mus.o(main) for __main
     startup.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup.o(.text) refers to startup.o(HEAP) for HeapMem
     startup.o(.text) refers to startup.o(STACK) for StackMem
+    mus.o(main) refers to inchar.o(.text) for InChar
+    mus.o(main) refers to outchar.o(.text) for OutChar
 
 
 ==============================================================================
@@ -20,8 +22,9 @@ Removing Unused input sections from the image.
 
     Removing startup.o(HEAP), (0 bytes).
     Removing startup.o(.text), (48 bytes).
+    Removing mus.o(sdata), (0 bytes).
 
-2 unused section(s) (total 48 bytes) removed from the image.
+3 unused section(s) (total 48 bytes) removed from the image.
 
 ==============================================================================
 
@@ -32,14 +35,20 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
-    PracticeLab.s                            0x00000000   Number         0  practicelab.o ABSOLUTE
+    InChar.s                                 0x00000000   Number         0  inchar.o ABSOLUTE
+    MUS.s                                    0x00000000   Number         0  mus.o ABSOLUTE
+    OutChar.s                                0x00000000   Number         0  outchar.o ABSOLUTE
     Startup.s                                0x00000000   Number         0  startup.o ABSOLUTE
     dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
     RESET                                    0x00000000   Section      644  startup.o(RESET)
     $v0                                      0x0000026c   Number         0  startup.o(RESET)
-    .text                                    0x00000284   Section        0  heapauxi.o(.text)
-    $v0                                      0x0000028c   Number         0  practicelab.o(main)
-    main                                     0x0000028c   Section       48  practicelab.o(main)
+    $v0                                      0x00000284   Number         0  inchar.o(.text)
+    .text                                    0x00000284   Section      188  inchar.o(.text)
+    $v0                                      0x00000340   Number         0  outchar.o(.text)
+    .text                                    0x00000340   Section      220  outchar.o(.text)
+    .text                                    0x0000041c   Section        0  heapauxi.o(.text)
+    $v0                                      0x00000424   Number         0  mus.o(main)
+    main                                     0x00000424   Section       16  mus.o(main)
     StackMem                                 0x20000000   Data           0  startup.o(STACK)
     STACK                                    0x20000000   Section     1024  startup.o(STACK)
 
@@ -47,7 +56,7 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$~IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$ROPI$EBA8$STANDARDLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$~IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$ROPI$EBA8$STANDARDLIB$REQ8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
     __Vectors                                0x00000000   Data           0  startup.o(RESET)
     Reset_Handler                            0x0000026d   Thumb Code     0  startup.o(RESET)
     NMI_Handler                              0x00000271   Thumb Code     2  startup.o(RESET)
@@ -173,10 +182,12 @@ Image Symbol Table
     WideTimer5B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
     uDMA_Error                               0x00000283   Thumb Code     0  startup.o(RESET)
     uDMA_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
-    __use_two_region_memory                  0x00000285   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_escrow$2region                 0x00000287   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_expand$2region                 0x00000289   Thumb Code     2  heapauxi.o(.text)
-    __main                                   0x0000028d   Thumb Code    44  practicelab.o(main)
+    InChar                                   0x00000285   Thumb Code     0  inchar.o(.text)
+    OutChar                                  0x00000341   Thumb Code     0  outchar.o(.text)
+    __use_two_region_memory                  0x0000041d   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x0000041f   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x00000421   Thumb Code     2  heapauxi.o(.text)
+    __main                                   0x00000425   Thumb Code     0  mus.o(main)
 
 
 
@@ -186,26 +197,28 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x000006c0, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000838, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000002bc, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x00000000   0x00000000   0x00000284   Code   RO            9  * RESET               startup.o
-    0x00000284   0x00000284   0x00000006   Code   RO           18    .text               c_w.l(heapauxi.o)
-    0x0000028a   0x0000028a   0x00000002   PAD
-    0x0000028c   0x0000028c   0x00000030   Code   RO            1    main                practicelab.o
-
-
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x000002c0, Size: 0x00000400, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000434, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x000002c0   0x00000400   Data   RW            7    STACK               startup.o
+    0x00000000   0x00000000   0x00000284   Code   RO            3  * RESET               startup.o
+    0x00000284   0x00000284   0x000000bc   Code   RO           12    .text               inchar.o
+    0x00000340   0x00000340   0x000000dc   Code   RO           15    .text               outchar.o
+    0x0000041c   0x0000041c   0x00000006   Code   RO           24    .text               c_w.l(heapauxi.o)
+    0x00000422   0x00000422   0x00000002   PAD
+    0x00000424   0x00000424   0x00000010   Code   RO           19    main                mus.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000400, Load base: 0x000006c0, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00000438, Size: 0x00000400, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x00000438   0x00000400   Data   RW            1    STACK               startup.o
+
+
+    Execution Region ER_ZI (Exec base: 0x20000400, Load base: 0x00000838, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
@@ -217,11 +230,13 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-        48          4          0          0          0        476   practicelab.o
-       644        620          0       1024          0        824   startup.o
+       188         48          0          0          0        344   inchar.o
+        16          0          0          0          0        288   mus.o
+       220         52          0          0          0        364   outchar.o
+       644        620          0       1024          0        856   startup.o
 
     ----------------------------------------------------------------------
-       692        624          0       1024          0       1300   Object Totals
+      1068        720          0       1024          0       1852   Object Totals
          0          0          0          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -251,15 +266,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-       700        624          0       1024          0       1352   Grand Totals
-       700        624          0       1024          0       1352   ELF Image Totals
-       700        624          0       1024          0          0   ROM Totals
+      1076        720          0       1024          0       2004   Grand Totals
+      1076        720          0       1024          0       2004   ELF Image Totals
+      1076        720          0       1024          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                  700 (   0.68kB)
+    Total RO  Size (Code + RO Data)                 1076 (   1.05kB)
     Total RW  Size (RW Data + ZI Data)              1024 (   1.00kB)
-    Total ROM Size (Code + RO Data + RW Data)       1724 (   1.68kB)
+    Total ROM Size (Code + RO Data + RW Data)       2100 (   2.05kB)
 
 ==============================================================================
 
