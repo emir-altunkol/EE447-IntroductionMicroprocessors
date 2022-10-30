@@ -13,6 +13,8 @@ MLT			EQU			2				; multiply by
             EXPORT 		__main
 			EXTERN		CONVRT
 			EXTERN		OutChar
+            EXTERN      InChar     		; Reference external
+				
 __main 		PROC
 			LDR			R0,	=2			; input (0-16)
 			LDR			R1,	=0			; F_{n-2}
@@ -21,8 +23,23 @@ __main 		PROC
 			LDR			R4, =0			; used in the convrt
 			LDR			R5,	=NUM		; used in the convrt as pointer
 			LDR			R6, =MLT		; R4 to store the multiplication value, for flexibility
+;---------------------------------------------------------------------
+			PUSH		{R8, R9}		; store R8, R9 to be used later
+			MOV			R0, #0			; clear R0			
+			BL			InChar			; wait for first input
+			SUB			R8, R0, #0x30	; convert ASCII to decimal
+			BL			InChar			; save second input
+			MOV			R9,	#10			; set R9 to 10
+			SUB			R0, R0, #0x30	; convert ASCII to decimal
+			MUL			R8,	R8,	R9		; multiply by 10 to create tens digit
+			ADD			R8,	R8,	R0		; add it to ones digit
+			MOV			R0,	R8			; set it to R0, which is the input
+			POP			{R8, R9}		; restore R8, R9
+;---------------------------------------------------------------------			
 			MOV			R7,	R0			; handle n<= case
-						
+
+			
+			
 			
 recursion	MUL			R1,	R6			; 2*F_{n-2}
 			ADD			R3, R2, R1		; F_{n} = F_{n-1} + 2*F_{n-2}

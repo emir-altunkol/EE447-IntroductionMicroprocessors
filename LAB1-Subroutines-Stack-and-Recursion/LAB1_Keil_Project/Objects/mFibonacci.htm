@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\mFibonacci.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\mFibonacci.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sun Oct 30 23:22:53 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Mon Oct 31 00:57:48 2022
 <BR><P>
 <H3>Maximum Stack Usage =          0 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -14,7 +14,8 @@ Functions with no stack information
 </H3><UL>
  <LI><a href="#[0]">Reset_Handler</a>
  <LI><a href="#[7e]">OutStr</a>
- <LI><a href="#[7f]">OutChar</a>
+ <LI><a href="#[80]">OutChar</a>
+ <LI><a href="#[7f]">InChar</a>
 </UL>
 </UL>
 <P>
@@ -582,15 +583,19 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CONVRT
 </UL>
 
-<P><STRONG><a name="[7f]"></a>OutChar</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, outchar.o(.text))
+<P><STRONG><a name="[80]"></a>OutChar</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, outchar.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 </UL>
 
-<P><STRONG><a name="[80]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[7f]"></a>InChar</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, inchar.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+</UL>
 
-<P><STRONG><a name="[81]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[81]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[82]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[82]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+
+<P><STRONG><a name="[83]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
 <P><STRONG><a name="[7d]"></a>CONVRT</STRONG> (Thumb, 116 bytes, Stack size 0 bytes, convrt.o(main))
 <BR><BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutStr
@@ -598,8 +603,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 </UL>
 
-<P><STRONG><a name="[7c]"></a>__main</STRONG> (Thumb, 78 bytes, Stack size 0 bytes, mfibonacci.o(main))
-<BR><BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutChar
+<P><STRONG><a name="[7c]"></a>__main</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, mfibonacci.o(main))
+<BR><BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutChar
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InChar
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CONVRT
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reset_Handler

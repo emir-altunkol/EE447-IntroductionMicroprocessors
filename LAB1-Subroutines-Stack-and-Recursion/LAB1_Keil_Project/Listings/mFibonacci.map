@@ -13,6 +13,7 @@ Section Cross References
     startup.o(.text) refers to startup.o(HEAP) for HeapMem
     startup.o(.text) refers to startup.o(STACK) for StackMem
     convrt.o(main) refers to outstr.o(.text) for OutStr
+    mfibonacci.o(main) refers to inchar.o(.text) for InChar
     mfibonacci.o(main) refers to convrt.o(main) for CONVRT
     mfibonacci.o(main) refers to outchar.o(.text) for OutChar
 
@@ -36,6 +37,7 @@ Image Symbol Table
 
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
     CONVRT.s                                 0x00000000   Number         0  convrt.o ABSOLUTE
+    InChar.s                                 0x00000000   Number         0  inchar.o ABSOLUTE
     OutChar.s                                0x00000000   Number         0  outchar.o ABSOLUTE
     OutStr.s                                 0x00000000   Number         0  outstr.o ABSOLUTE
     Startup.s                                0x00000000   Number         0  startup.o ABSOLUTE
@@ -47,11 +49,13 @@ Image Symbol Table
     .text                                    0x00000284   Section      236  outstr.o(.text)
     $v0                                      0x00000370   Number         0  outchar.o(.text)
     .text                                    0x00000370   Section      220  outchar.o(.text)
-    .text                                    0x0000044c   Section        0  heapauxi.o(.text)
-    $v0                                      0x00000454   Number         0  convrt.o(main)
-    main                                     0x00000454   Section      116  convrt.o(main)
-    $v0                                      0x000004c8   Number         0  mfibonacci.o(main)
-    main                                     0x000004c8   Section       80  mfibonacci.o(main)
+    $v0                                      0x0000044c   Number         0  inchar.o(.text)
+    .text                                    0x0000044c   Section      188  inchar.o(.text)
+    .text                                    0x00000508   Section        0  heapauxi.o(.text)
+    $v0                                      0x00000510   Number         0  convrt.o(main)
+    main                                     0x00000510   Section      116  convrt.o(main)
+    $v0                                      0x00000584   Number         0  mfibonacci.o(main)
+    main                                     0x00000584   Section      120  mfibonacci.o(main)
     StackMem                                 0x20000000   Data           0  startup.o(STACK)
     STACK                                    0x20000000   Section     1024  startup.o(STACK)
 
@@ -187,11 +191,12 @@ Image Symbol Table
     uDMA_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
     OutStr                                   0x00000285   Thumb Code     0  outstr.o(.text)
     OutChar                                  0x00000371   Thumb Code     0  outchar.o(.text)
-    __use_two_region_memory                  0x0000044d   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_escrow$2region                 0x0000044f   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_expand$2region                 0x00000451   Thumb Code     2  heapauxi.o(.text)
-    CONVRT                                   0x00000455   Thumb Code   116  convrt.o(main)
-    __main                                   0x000004c9   Thumb Code    78  mfibonacci.o(main)
+    InChar                                   0x0000044d   Thumb Code     0  inchar.o(.text)
+    __use_two_region_memory                  0x00000509   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x0000050b   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x0000050d   Thumb Code     2  heapauxi.o(.text)
+    CONVRT                                   0x00000511   Thumb Code   116  convrt.o(main)
+    __main                                   0x00000585   Thumb Code   118  mfibonacci.o(main)
 
 
 
@@ -201,29 +206,30 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00000918, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000a00, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000518, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000005fc, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000000   0x00000284   Code   RO            8  * RESET               startup.o
     0x00000284   0x00000284   0x000000ec   Code   RO            1    .text               outstr.o
     0x00000370   0x00000370   0x000000dc   Code   RO           23    .text               outchar.o
-    0x0000044c   0x0000044c   0x00000006   Code   RO           28    .text               c_w.l(heapauxi.o)
-    0x00000452   0x00000452   0x00000002   PAD
-    0x00000454   0x00000454   0x00000074   Code   RO           15    main                convrt.o
-    0x000004c8   0x000004c8   0x00000050   Code   RO           19    main                mfibonacci.o
+    0x0000044c   0x0000044c   0x000000bc   Code   RO           26    .text               inchar.o
+    0x00000508   0x00000508   0x00000006   Code   RO           31    .text               c_w.l(heapauxi.o)
+    0x0000050e   0x0000050e   0x00000002   PAD
+    0x00000510   0x00000510   0x00000074   Code   RO           15    main                convrt.o
+    0x00000584   0x00000584   0x00000078   Code   RO           19    main                mfibonacci.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00000518, Size: 0x00000400, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00000600, Size: 0x00000400, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00000518   0x00000400   Data   RW            6    STACK               startup.o
+    0x20000000   0x00000600   0x00000400   Data   RW            6    STACK               startup.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000400, Load base: 0x00000918, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000400, Load base: 0x00000a00, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
@@ -236,13 +242,14 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        116          0          0          0          0        428   convrt.o
-        80          2          0          0          0        428   mfibonacci.o
+       188         48          0          0          0        316   inchar.o
+       120          2          0          0          0        436   mfibonacci.o
        220         52          0          0          0        340   outchar.o
        236         54          0          0          0        372   outstr.o
        644        620          0       1024          0        800   startup.o
 
     ----------------------------------------------------------------------
-      1296        728          0       1024          0       2368   Object Totals
+      1524        776          0       1024          0       2692   Object Totals
          0          0          0          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -272,15 +279,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1304        728          0       1024          0       2320   Grand Totals
-      1304        728          0       1024          0       2320   ELF Image Totals
-      1304        728          0       1024          0          0   ROM Totals
+      1532        776          0       1024          0       2644   Grand Totals
+      1532        776          0       1024          0       2644   ELF Image Totals
+      1532        776          0       1024          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 1304 (   1.27kB)
+    Total RO  Size (Code + RO Data)                 1532 (   1.50kB)
     Total RW  Size (RW Data + ZI Data)              1024 (   1.00kB)
-    Total ROM Size (Code + RO Data + RW Data)       2328 (   2.27kB)
+    Total ROM Size (Code + RO Data + RW Data)       2556 (   2.50kB)
 
 ==============================================================================
 
