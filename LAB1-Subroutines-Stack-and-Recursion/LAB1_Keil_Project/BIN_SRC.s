@@ -51,7 +51,10 @@ guess		ADD			R4, R3, R5		; Guess value is stored in R4 = (upper+lower+1)/2
 ;			MOV			R0, R5
 			POP			{R5}			; Retrieve the upper boundary value from stack
 ;			BL			OutStr			; Prints the value stored in adress R0
-			BL			InChar			; Takes a single byte input from the user, stores it in R0
+;			BL			InChar			; Takes a single byte input from the user, stores it in R0
+run			BL			InChar			;
+			CMP			R0, #0x0a		;
+			BEQ			run
 			CMP			R0, #0x43		; If input is 'C', terminate the program
 			BEQ			idle
 			BL			UPBND			; Changes lower boundary R3 and upper boundary R5 according to the input stored in R0
