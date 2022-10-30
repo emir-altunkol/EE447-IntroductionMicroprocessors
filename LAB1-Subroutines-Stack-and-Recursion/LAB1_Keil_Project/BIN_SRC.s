@@ -2,7 +2,7 @@
 ; These directives do not allocate memory
 ;***************************************************************
 ;LABEL      DIRECTIVE   VALUE       COMMENT
-STR_ADDR	EQU			0x20000000
+STR_ADDR	EQU			0x20000400
 ;***************************************************************
 ; Directives - This Data Section is part of the code
 ; It is in the read only section  so values cannot be changed.
@@ -16,39 +16,41 @@ STR_ADDR	EQU			0x20000000
 ;LABEL      DIRECTIVE   VALUE       COMMENT
             AREA        main, READONLY, CODE
             THUMB
-            EXTERN      InChar      ; Reference external subroutine 
 			EXTERN      CONVRT      ; Reference external subroutine 
+            EXTERN      InChar      ; Reference external subroutine 
 ;			EXTERN      UPBND       ; Reference external subroutine 
             EXPORT      __main      ; Make available
 
 __main
 start       MOV         R0,#0
 			BL			InChar
-			SUB			R2, R5, #0x30
+			SUB			R2, R0, #0x30
+;			MOV         R0,#0
+;			PUSH		{LR}
 			BL			InChar
+;			POP			{LR}
 			MOV 		R3, #10
-			SUB			R5, R5, #0x30
+			SUB			R0, R0, #0x30
 			MUL			R2, R2, R3
-			ADD         R2, R2, R5	; R2 = n
+			ADD         R2, R2, R0	; R2 = n
 			
 			; From now on, R3 is the lower boundary,
-			; R5 is the upper boundary, and R2 will 
-			; be n-1
+			; R5 is the upper boundary
 			
-			SUB			R2, R2, #1
-			MOV			R3, #0			; Initialize the boundaries
+			MOV			R3, #1			; Initialize the boundaries
 			MOV			R5, #1
 			LSL			R5, R2
-			SUB			R5, R5, #1		; The value cannot be 2^n
+			SUB			R5, R5, #1		; The value is smaller than 2^n
 			
 guess		ADD			R4, R3, R5		; Guess value is stored in R4 = (upper+lower+1)/2
 			ADD			R4, #1
 			LSR			R4, #1
 			PUSH		{R5}			; Upper boundary is stored in stack
-			BL			CONVRT			; Changes R5 as the address of the new decimal digit sequence representing R4
-			MOV			R0, R5
+			LDR			R5, =STR_ADDR	
+			BL			CONVRT			; Writes the decimal digit sequence representing R4 to the address at R5
+;			MOV			R0, R5
 			POP			{R5}			; Retrieve the upper boundary value from stack
-			BL			OutStr			; Prints the value stored in adress R0
+;			BL			OutStr			; Prints the value stored in adress R0
 			BL			InChar			; Takes a single byte input from the user, stores it in R0
 			CMP			R0, #0x43		; If input is 'C', terminate the program
 			BEQ			idle
