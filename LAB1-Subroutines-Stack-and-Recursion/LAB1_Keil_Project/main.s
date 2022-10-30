@@ -14,6 +14,8 @@ __main 		PROC
 			LDR			R4,	=1523
 			LDR			R5,	=0x20000000
 			BL 			CONVRT
+			
+done		BL			done
 			ENDP
 ;***************************************************************
 ; End of the program section
