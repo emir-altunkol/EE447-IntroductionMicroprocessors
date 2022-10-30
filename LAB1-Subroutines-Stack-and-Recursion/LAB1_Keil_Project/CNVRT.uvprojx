@@ -399,6 +399,11 @@
               <FileType>2</FileType>
               <FilePath>.\main.s</FilePath>
             </File>
+            <File>
+              <FileName>OutStr.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\OutStr.s</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

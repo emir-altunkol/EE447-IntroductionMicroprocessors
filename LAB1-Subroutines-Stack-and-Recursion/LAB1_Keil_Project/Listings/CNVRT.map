@@ -4,6 +4,7 @@ Component: Arm Compiler for Embedded 6.18 Tool: armlink [5e4cc100]
 
 Section Cross References
 
+    convrt.o(main) refers to outstr.o(.text) for OutStr
     startup.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
@@ -34,16 +35,19 @@ Image Symbol Table
 
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
     CONVRT.s                                 0x00000000   Number         0  convrt.o ABSOLUTE
+    OutStr.s                                 0x00000000   Number         0  outstr.o ABSOLUTE
     Startup.s                                0x00000000   Number         0  startup.o ABSOLUTE
     dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
     main.s                                   0x00000000   Number         0  main.o ABSOLUTE
     RESET                                    0x00000000   Section      644  startup.o(RESET)
     $v0                                      0x0000026c   Number         0  startup.o(RESET)
-    .text                                    0x00000284   Section        0  heapauxi.o(.text)
-    $v0                                      0x0000028c   Number         0  convrt.o(main)
-    main                                     0x0000028c   Section       60  convrt.o(main)
-    $v0                                      0x000002c8   Number         0  main.o(main)
-    main                                     0x000002c8   Section       16  main.o(main)
+    $v0                                      0x00000284   Number         0  outstr.o(.text)
+    .text                                    0x00000284   Section      236  outstr.o(.text)
+    .text                                    0x00000370   Section        0  heapauxi.o(.text)
+    $v0                                      0x00000378   Number         0  convrt.o(main)
+    main                                     0x00000378   Section      116  convrt.o(main)
+    $v0                                      0x000003ec   Number         0  main.o(main)
+    main                                     0x000003ec   Section       16  main.o(main)
     StackMem                                 0x20000000   Data           0  startup.o(STACK)
     STACK                                    0x20000000   Section     1024  startup.o(STACK)
 
@@ -51,7 +55,7 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$~IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$ROPI$EBA8$STANDARDLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$~IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$ROPI$EBA8$STANDARDLIB$REQ8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
     __Vectors                                0x00000000   Data           0  startup.o(RESET)
     Reset_Handler                            0x0000026d   Thumb Code     0  startup.o(RESET)
     NMI_Handler                              0x00000271   Thumb Code     2  startup.o(RESET)
@@ -177,11 +181,12 @@ Image Symbol Table
     WideTimer5B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
     uDMA_Error                               0x00000283   Thumb Code     0  startup.o(RESET)
     uDMA_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
-    __use_two_region_memory                  0x00000285   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_escrow$2region                 0x00000287   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_expand$2region                 0x00000289   Thumb Code     2  heapauxi.o(.text)
-    CONVRT                                   0x0000028d   Thumb Code    60  convrt.o(main)
-    __main                                   0x000002c9   Thumb Code    16  main.o(main)
+    OutStr                                   0x00000285   Thumb Code     0  outstr.o(.text)
+    __use_two_region_memory                  0x00000371   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x00000373   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x00000375   Thumb Code     2  heapauxi.o(.text)
+    CONVRT                                   0x00000379   Thumb Code   116  convrt.o(main)
+    __main                                   0x000003ed   Thumb Code    14  main.o(main)
 
 
 
@@ -191,27 +196,28 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x000006d8, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000800, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000002d8, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000003fc, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000000   0x00000284   Code   RO            9  * RESET               startup.o
-    0x00000284   0x00000284   0x00000006   Code   RO           22    .text               c_w.l(heapauxi.o)
-    0x0000028a   0x0000028a   0x00000002   PAD
-    0x0000028c   0x0000028c   0x0000003c   Code   RO            1    main                convrt.o
-    0x000002c8   0x000002c8   0x00000010   Code   RO           16    main                main.o
+    0x00000284   0x00000284   0x000000ec   Code   RO           20    .text               outstr.o
+    0x00000370   0x00000370   0x00000006   Code   RO           25    .text               c_w.l(heapauxi.o)
+    0x00000376   0x00000376   0x00000002   PAD
+    0x00000378   0x00000378   0x00000074   Code   RO            1    main                convrt.o
+    0x000003ec   0x000003ec   0x00000010   Code   RO           16    main                main.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x000002d8, Size: 0x00000400, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00000400, Size: 0x00000400, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x000002d8   0x00000400   Data   RW            7    STACK               startup.o
+    0x20000000   0x00000400   0x00000400   Data   RW            7    STACK               startup.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000400, Load base: 0x000006d8, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000400, Load base: 0x00000800, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
@@ -223,12 +229,13 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-        60          0          0          0          0        440   convrt.o
-        16          0          0          0          0        396   main.o
+       116          0          0          0          0        460   convrt.o
+        16          2          0          0          0        396   main.o
+       236         54          0          0          0        340   outstr.o
        644        620          0       1024          0        800   startup.o
 
     ----------------------------------------------------------------------
-       720        620          0       1024          0       1636   Object Totals
+      1012        676          0       1024          0       1996   Object Totals
          0          0          0          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -258,15 +265,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-       728        620          0       1024          0       1588   Grand Totals
-       728        620          0       1024          0       1588   ELF Image Totals
-       728        620          0       1024          0          0   ROM Totals
+      1020        676          0       1024          0       1948   Grand Totals
+      1020        676          0       1024          0       1948   ELF Image Totals
+      1020        676          0       1024          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                  728 (   0.71kB)
+    Total RO  Size (Code + RO Data)                 1020 (   1.00kB)
     Total RW  Size (RW Data + ZI Data)              1024 (   1.00kB)
-    Total ROM Size (Code + RO Data + RW Data)       1752 (   1.71kB)
+    Total ROM Size (Code + RO Data + RW Data)       2044 (   2.00kB)
 
 ==============================================================================
 

@@ -11,11 +11,11 @@
             EXPORT 		__main
 			EXTERN		CONVRT
 __main 		PROC
-			LDR			R4,	=1523
+			LDR			R4,	=4294967295
 			LDR			R5,	=0x20000000
 			BL 			CONVRT
 			
-done		BL			done
+done		B			done
 			ENDP
 ;***************************************************************
 ; End of the program section
