@@ -400,11 +400,6 @@
               <FilePath>.\CONVRT.s</FilePath>
             </File>
             <File>
-              <FileName>mfibonacci.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\mfibonacci.s</FilePath>
-            </File>
-            <File>
               <FileName>OutChar.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\OutChar.s</FilePath>
@@ -413,6 +408,11 @@
               <FileName>InChar.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\InChar.s</FilePath>
+            </File>
+            <File>
+              <FileName>mFibonacciREC.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\mFibonacciREC.s</FilePath>
             </File>
           </Files>
         </Group>
