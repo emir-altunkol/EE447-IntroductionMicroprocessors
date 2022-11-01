@@ -410,9 +410,9 @@
               <FilePath>.\InChar.s</FilePath>
             </File>
             <File>
-              <FileName>mFibonacciREC.s</FileName>
+              <FileName>mFibRecLAST.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\mFibonacciREC.s</FilePath>
+              <FilePath>.\mFibRecLAST.s</FilePath>
             </File>
           </Files>
         </Group>
