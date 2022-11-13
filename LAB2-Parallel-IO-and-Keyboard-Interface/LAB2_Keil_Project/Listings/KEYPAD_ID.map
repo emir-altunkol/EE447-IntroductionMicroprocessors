@@ -13,18 +13,18 @@ Section Cross References
     startup.o(.text) refers to startup.o(HEAP) for HeapMem
     startup.o(.text) refers to startup.o(STACK) for StackMem
     keypad_id.o(main) refers to gpio_init.o(main) for GPIO_Init
+    keypad_id.o(main) refers to delay150.o(main) for DELAY150
+    keypad_id.o(main) refers to outchar.o(.text) for OutChar
 
 
 ==============================================================================
 
 Removing Unused input sections from the image.
 
-    Removing delay150.o(main), (20 bytes).
-    Removing outchar.o(.text), (220 bytes).
     Removing startup.o(HEAP), (0 bytes).
     Removing startup.o(.text), (48 bytes).
 
-4 unused section(s) (total 288 bytes) removed from the image.
+2 unused section(s) (total 48 bytes) removed from the image.
 
 ==============================================================================
 
@@ -43,11 +43,15 @@ Image Symbol Table
     dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
     RESET                                    0x00000000   Section      644  startup.o(RESET)
     $v0                                      0x0000026c   Number         0  startup.o(RESET)
-    .text                                    0x00000284   Section        0  heapauxi.o(.text)
-    $v0                                      0x0000028c   Number         0  keypad_id.o(main)
-    main                                     0x0000028c   Section        4  keypad_id.o(main)
-    $v0                                      0x00000290   Number         0  gpio_init.o(main)
-    main                                     0x00000290   Section       92  gpio_init.o(main)
+    $v0                                      0x00000284   Number         0  outchar.o(.text)
+    .text                                    0x00000284   Section      220  outchar.o(.text)
+    .text                                    0x00000360   Section        0  heapauxi.o(.text)
+    $v0                                      0x00000368   Number         0  delay150.o(main)
+    main                                     0x00000368   Section       20  delay150.o(main)
+    $v0                                      0x0000037c   Number         0  keypad_id.o(main)
+    main                                     0x0000037c   Section      204  keypad_id.o(main)
+    $v0                                      0x00000448   Number         0  gpio_init.o(main)
+    main                                     0x00000448   Section       92  gpio_init.o(main)
     StackMem                                 0x20000000   Data           0  startup.o(STACK)
     STACK                                    0x20000000   Section     1024  startup.o(STACK)
 
@@ -181,11 +185,13 @@ Image Symbol Table
     WideTimer5B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
     uDMA_Error                               0x00000283   Thumb Code     0  startup.o(RESET)
     uDMA_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
-    __use_two_region_memory                  0x00000285   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_escrow$2region                 0x00000287   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_expand$2region                 0x00000289   Thumb Code     2  heapauxi.o(.text)
-    __main                                   0x0000028d   Thumb Code     4  keypad_id.o(main)
-    GPIO_Init                                0x00000291   Thumb Code    70  gpio_init.o(main)
+    OutChar                                  0x00000285   Thumb Code     0  outchar.o(.text)
+    __use_two_region_memory                  0x00000361   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x00000363   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x00000365   Thumb Code     2  heapauxi.o(.text)
+    DELAY150                                 0x00000369   Thumb Code    20  delay150.o(main)
+    __main                                   0x0000037d   Thumb Code   196  keypad_id.o(main)
+    GPIO_Init                                0x00000449   Thumb Code    70  gpio_init.o(main)
 
 
 
@@ -195,27 +201,29 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x000006f0, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x000008a8, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000002ec, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000004a4, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000000   0x00000284   Code   RO           12  * RESET               startup.o
-    0x00000284   0x00000284   0x00000006   Code   RO           29    .text               c_w.l(heapauxi.o)
-    0x0000028a   0x0000028a   0x00000002   PAD
-    0x0000028c   0x0000028c   0x00000004   Code   RO           19    main                keypad_id.o
-    0x00000290   0x00000290   0x0000005c   Code   RO           23    main                gpio_init.o
+    0x00000284   0x00000284   0x000000dc   Code   RO            7    .text               outchar.o
+    0x00000360   0x00000360   0x00000006   Code   RO           29    .text               c_w.l(heapauxi.o)
+    0x00000366   0x00000366   0x00000002   PAD
+    0x00000368   0x00000368   0x00000014   Code   RO            1    main                delay150.o
+    0x0000037c   0x0000037c   0x000000cc   Code   RO           19    main                keypad_id.o
+    0x00000448   0x00000448   0x0000005c   Code   RO           23    main                gpio_init.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x000002f0, Size: 0x00000400, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x000004a8, Size: 0x00000400, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x000002f0   0x00000400   Data   RW           10    STACK               startup.o
+    0x20000000   0x000004a8   0x00000400   Data   RW           10    STACK               startup.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000400, Load base: 0x000006f0, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000400, Load base: 0x000008a8, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
@@ -227,13 +235,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-         0          0          0          0          0         32   delay150.o
+        20          0          0          0          0        496   delay150.o
         92         22          0          0          0        492   gpio_init.o
-         4          0          0          0          0        460   keypad_id.o
+       204          8          0          0          0        532   keypad_id.o
+       220         52          0          0          0        400   outchar.o
        644        620          0       1024          0        860   startup.o
 
     ----------------------------------------------------------------------
-       740        642          0       1024          0       1844   Object Totals
+      1180        702          0       1024          0       2780   Object Totals
          0          0          0          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -263,15 +272,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-       748        642          0       1024          0       1796   Grand Totals
-       748        642          0       1024          0       1796   ELF Image Totals
-       748        642          0       1024          0          0   ROM Totals
+      1188        702          0       1024          0       2632   Grand Totals
+      1188        702          0       1024          0       2632   ELF Image Totals
+      1188        702          0       1024          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                  748 (   0.73kB)
+    Total RO  Size (Code + RO Data)                 1188 (   1.16kB)
     Total RW  Size (RW Data + ZI Data)              1024 (   1.00kB)
-    Total ROM Size (Code + RO Data + RW Data)       1772 (   1.73kB)
+    Total ROM Size (Code + RO Data + RW Data)       2212 (   2.16kB)
 
 ==============================================================================
 
