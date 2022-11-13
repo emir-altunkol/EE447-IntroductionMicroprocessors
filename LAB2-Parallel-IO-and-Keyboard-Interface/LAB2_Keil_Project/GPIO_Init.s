@@ -10,7 +10,7 @@ GPIO_PORTB_DEN		EQU			0x4000551C
 GPIO_PORTB_PUR		EQU			0x40005510
 GPIO_PORTB_PDR		EQU			0x40005514
 IOB					EQU			0x0F			; first 4 pins are outputs, the others are inputs
-PUB					EQU			0xF0
+PDB					EQU			0xF0
 SYSCTL_RCGCGPIO		EQU			0x400FE608		; Initialize clock for GPIOs	
 ;***************************************************************
 ; Program section
@@ -43,10 +43,10 @@ GPIO_Init	PROC
 			LDR			R0, [R1]
 			ORR			R0, #0xFF				; digital mode enabled
 			STR			R0, [R1]
-			LDR			R1, =GPIO_PORTB_PUR		
+			LDR			R1, =GPIO_PORTB_PDR		
 			LDR			R0, [R1]
 			BIC			R0, #0xFF				; it should be cleared in our case
-			ORR			R0, #PUB
+			ORR			R0, #PDB
 			STR			R0, [R1]
 			
 			POP			{R0,R1}

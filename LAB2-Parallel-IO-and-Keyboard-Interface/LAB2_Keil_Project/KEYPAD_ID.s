@@ -4,7 +4,7 @@
 ;***************************************************************
 ;SYMBOL		DIRECTIVE	VALUE			COMMENT
 PB_OUT		EQU			0x4000503C		; choose the [2:5] bits for writing
-PB_IN		EQU			0x400053C0		; choose the [2:5] bits for reading
+PB_IN		EQU			0x400053C0		; choose the [6:9] bits for reading
 ;***************************************************************
 ; Program section
 ;***************************************************************
@@ -26,6 +26,8 @@ loopRows	LDR			R5,=PB_OUT
 readP		STR			R1,[R5]		; Apply necessary voltage settings
 			LDR			R5,=PB_IN	
 			LDR			R2,[R5]		; Read data from the keys
+			LDR			R7, =0x20000400
+			STR			R2,[R7]		; Read data from the keys
 			BL			DELAY150	; Debounce (wait for 150ms)
 			LDR			R3,[R5]		; Read another data from the keys
 			CMP			R3,R2		
