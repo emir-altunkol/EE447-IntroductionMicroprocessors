@@ -12,6 +12,8 @@ void SysTick_Handler(void);
 uint32_t down_restart = 0; 
 uint32_t up_restart = 0;
 
+uint32_t speed = 50000;
+
 int step_up = 0;
 int	step_down = 0;
 
@@ -67,10 +69,8 @@ int main(void) {
 
 
 
-/*/////////////////////PART-2///////////////////////////*/
-
-
-
+/*/////////////////////PART-3///////////////////////////*/
+/*
 void SysTick_Handler(void) {
 
 	int pin_state = (0xF0 & GPIOB->DATA) >> 4;
@@ -134,5 +134,110 @@ int main(void) {
 	while(1){
 	}
 }  
+*/
+/*/////////////////////PART-3///////////////////////////*/
 
-/*/////////////////////PART-2///////////////////////////*/
+
+/*/////////////////////PART-5///////////////////////////*/
+
+void SysTick_Handler(void) {
+
+	int pin_state = (0xF0 & GPIOB->DATA) >> 4;
+	if (pin_state == 14){  // d14 = b1110
+		//__ASM("BL DELAY50");
+		//__ASM("BL DELAY50");
+		if (pin_state == 14){ // d14 = b1110
+		step_up = 1;
+		GPIOF->DATA = GPIOF->DATA & 0xF0 + 0x08 ; // For debugging purposes 
+		}
+	}
+	
+	if (pin_state == 13){  // d13 = b1101
+	//__ASM("BL DELAY50");
+		if (pin_state == 13){ // d13 = b1101
+		step_up = 0;
+			GPIOF->DATA = GPIOF->DATA & 0xF0 + 0x00 ; // For debugging purposes 
+		}
+	}
+	
+		if (pin_state == 11){  // d13 = b1101
+	//__ASM("BL DELAY50");
+		if (pin_state == 11){ // d13 = b1101
+		if(SysTick->LOAD < 16000000 ){
+		SysTick->LOAD = SysTick->LOAD + speed;
+		}else{
+			SysTick->LOAD = 16000000;
+		}
+	
+		}
+	}
+	
+	
+			if (pin_state == 7){  // d13 = b1101
+	//__ASM("BL DELAY50");
+		if (pin_state == 7){ // d13 = b1101
+		if(SysTick->LOAD > 100000 ){
+		SysTick->LOAD = SysTick->LOAD - speed;
+		}else{
+			SysTick->LOAD = 100000;
+		}
+	
+		}
+	}
+	
+	//
+	
+	
+	
+	
+	
+		if (pin_state == 15){ // d15 = b1111
+		//__ASM("BL DELAY50");
+			if (pin_state == 15){ // d15 = b1111
+			if (step_up == 1){
+					if (up_restart == 1){
+					up_restart = 0; 
+					GPIOB->DATA = (GPIOB->DATA & 0xF0) +  0x01;
+					}
+					else{
+					GPIOB->DATA = (GPIOB->DATA & 0xF0) + ((GPIOB->DATA*2)& 0x0F) ;
+					}
+
+					//GPIOF->DATA = GPIOF->DATA ^ 8 ;
+		}
+			
+			if (step_up == 0){
+					if (down_restart == 1){
+					down_restart = 0; 
+					GPIOB->DATA = (GPIOB->DATA & 0xF0) +  0x08;
+					}
+					else{
+					GPIOB->DATA = (GPIOB->DATA & 0xF0) + ((GPIOB->DATA& 0x0F)/2) ;
+					}
+
+			}
+		
+		}
+	
+		}
+							if ((GPIOB->DATA & 0x0F) == 8){
+					up_restart = 1; 
+					}	
+		
+						if ((GPIOB->DATA & 0x0F) ==  1){
+					down_restart = 1; 
+					}	
+}
+
+int main(void) {
+	
+	init_gpio();
+	init_systick();
+	
+	GPIOB->DATA = 2;
+	while(1){
+	}
+}  
+
+/*/////////////////////PART-5///////////////////////////*/
+
