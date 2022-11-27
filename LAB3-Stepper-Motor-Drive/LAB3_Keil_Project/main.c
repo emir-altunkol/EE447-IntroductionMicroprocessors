@@ -148,7 +148,7 @@ void SysTick_Handler(void) {
 		//__ASM("BL DELAY50");
 		if (pin_state == 14){ // d14 = b1110
 		step_up = 1;
-		GPIOF->DATA = GPIOF->DATA & 0xF0 + 0x08 ; // For debugging purposes 
+		
 		}
 	}
 	
@@ -156,7 +156,7 @@ void SysTick_Handler(void) {
 	//__ASM("BL DELAY50");
 		if (pin_state == 13){ // d13 = b1101
 		step_up = 0;
-			GPIOF->DATA = GPIOF->DATA & 0xF0 + 0x00 ; // For debugging purposes 
+			 
 		}
 	}
 	
@@ -203,7 +203,7 @@ void SysTick_Handler(void) {
 					GPIOB->DATA = (GPIOB->DATA & 0xF0) + ((GPIOB->DATA*2)& 0x0F) ;
 					}
 
-					//GPIOF->DATA = GPIOF->DATA ^ 8 ;
+					GPIOF->DATA = (GPIOF->DATA & 0xF0) + 0x08 ; // For debugging purposes 
 		}
 			
 			if (step_up == 0){
@@ -214,6 +214,7 @@ void SysTick_Handler(void) {
 					else{
 					GPIOB->DATA = (GPIOB->DATA & 0xF0) + ((GPIOB->DATA& 0x0F)/2) ;
 					}
+					GPIOF->DATA = (GPIOF->DATA & 0xF0) + 0x00 ; // For debugging purposes
 
 			}
 		
