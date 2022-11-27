@@ -9,7 +9,7 @@ void pulse_init(void);
 void TIMER0A_Handler (void);
 
 #define LOW 	0x00000100
-#define HIGH 	0x00000100
+#define HIGH 	0x00000100 
 
 void pulse_init(void){
 	volatile int *NVIC_EN0 = (volatile int*) 0xE000E100;
