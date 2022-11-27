@@ -394,6 +394,11 @@
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
             </File>
+            <File>
+              <FileName>DELAY50.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\DELAY50.s</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
