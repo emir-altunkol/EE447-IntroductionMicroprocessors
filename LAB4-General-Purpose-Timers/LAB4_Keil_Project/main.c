@@ -8,7 +8,7 @@ Uses Timer0A to create pulse train on PF2
 void pulse_init(void);
 void TIMER0A_Handler (void);
 
-#define LOW 	31
+#define LOW 	10
 #define HIGH 	0x00000200
 
 int count = 0;
@@ -27,8 +27,8 @@ void pulse_init(void){
 	GPIOF->AMSEL		=0; //Disable analog
 	GPIOF->DEN			|=0x04; // Enable port digital
 	
-	GPIOF->DIR       |= 0x08; //set GREEN pin as a digital output pin
-  GPIOF->DEN       |= 0x08;  // Enable PF3 pin as a digital pin
+	//GPIOF->DIR       |= 0x08; //set GREEN pin as a digital output pin
+  //GPIOF->DEN       |= 0x08;  // Enable PF3 pin as a digital pin
 	
 	SYSCTL->RCGCTIMER	|=0x01; // Start timer0
 	__ASM("NOP");
@@ -37,8 +37,8 @@ void pulse_init(void){
 	TIMER0->CTL			&=0xFFFFFFFE; //Disable timer during setup
 	TIMER0->CFG			=0x04;  //Set 16 bit mode
 	TIMER0->TAMR		=0x02; // set to periodic, count down
-	TIMER0->TAILR		=LOW; //Set interval load as LOW
-	TIMER0->TAPR		=15; // Divide the clock by 16 to get 1us
+	TIMER0->TAILR		=LOW-1; //Set interval load as LOW. This is 16-bit, max of 1-65535. 
+	TIMER0->TAPR		=16-1; // Divide the clock by 16 to get 1us. 8-bit Prescaler can reduce the frequency (16MHz) by 1-255.
 	TIMER0->IMR			=0x01; //Enable timeout intrrupt	
 	
 	//Timer0A is interrupt 19
@@ -58,14 +58,16 @@ void pulse_init(void){
 }
 
 void TIMER0A_Handler (void){
+
 	if (count==4){
 		count = 0;
-		GPIOF->DATA  |= 8;  //toggle PF3 pin
+		GPIOF->DATA  |= 4;  //toggle PF3 pin
 	}else{
-		GPIOF->DATA  &= 0xF7;
+		GPIOF->DATA  &= 0xFB;
 		count = count +1;
 	}
 	TIMER0->ICR |=0x01; //Clear the interrupt
+	
 	return;
 }
 
