@@ -8,8 +8,8 @@ Uses Timer0A to create pulse train on PF2
 void pulse_init(void);
 void TIMER0A_Handler (void);
 
-#define LOW 	10
-#define HIGH 	0x00000200
+#define LOW 	10 
+#define HIGH 	40
 
 int count = 0;
 
@@ -59,12 +59,12 @@ void pulse_init(void){
 
 void TIMER0A_Handler (void){
 
-	if (count==4){
+	if (count==(HIGH/LOW)){
 		count = 0;
 		GPIOF->DATA  |= 4;  //toggle PF3 pin
 	}else{
 		GPIOF->DATA  &= 0xFB;
-		count = count +1;
+		count = count + 1;
 	}
 	TIMER0->ICR |=0x01; //Clear the interrupt
 	
