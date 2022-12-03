@@ -10,6 +10,7 @@ Uses Timer0A to create pulse train on PF2
 
 void pulse_init(void);
 void TIMER0A_Handler (void);
+void TIMER3A_Handler (void);
 double Timer3ACapture_PulseWidth(void);
 double Timer3ACapture_Period(void);
 void Delay(unsigned long counter);
@@ -31,8 +32,9 @@ int count = 0;
 double time_period;
 double time_width;
 double time_duty;
-
-
+uint32_t rising_edge_current = 0;
+uint32_t rising_edge_former  = 0;
+uint32_t falling_edge = 0;
 
 void pulse_init(void){
 	volatile int *NVIC_EN0 = (volatile int*) 0xE000E100;
@@ -71,7 +73,7 @@ void pulse_init(void){
 	TIMER0->TAMR		=0x02; // set to periodic, count down
 	TIMER0->TAILR		=LOW-1; //Set interval load as LOW. This is 16-bit, max of 1-65535. 
 	TIMER0->TAPR		=16-1; // Divide the clock by 16 to get 1us. 8-bit Prescaler can reduce the frequency (16MHz) by 1-255.
-	TIMER0->IMR			=0x01; //Enable timeout intrrupt	
+	TIMER0->IMR			=0x01; //Enable timeout interrupt	
 	
 	
 	SYSCTL->RCGCTIMER	|=0x08; // Start timer3
@@ -83,7 +85,7 @@ void pulse_init(void){
 	TIMER3->TAMR		=0x17; // up-count, capture mod, input edge time mode
 	TIMER3->TAPR		=16-1; // Divide the clock by 16 to get 1us. 8-bit Prescaler can reduce the frequency (16MHz) by 1-255.
 	TIMER3->CTL			|=(1<<3)|(1<<2) ; // capture rising and falling edges on PB2
-	//TIMER3->IMR			=0x01; //Enable timeout intrrupt	
+	TIMER3->IMR			=0x4; //Enable capture mode event interrupt	
 	
 	
 	
@@ -94,13 +96,14 @@ void pulse_init(void){
 	//Interrupt 19 is controlled by bits 31:29 of PRI4
 	*NVIC_PRI4 &=0x00FFFFFF; //Clear interrupt 19 priority
 	*NVIC_PRI4 |=0x40000000; //Set interrupt 19 priority to 2
-	
+	*NVIC_PRI4 |=0x00004000; //Set interrupt 19 priority to 2
 	
 	//NVIC has to be neabled
 	//Interrupts 0-31 are handled by NVIC register EN0
 	//Interrupt 19 is controlled by bit 19
 	*NVIC_EN0 |=0x00080000;
-	
+	//Interrupt 19 is controlled by bit 19
+	*NVIC_EN0 |=0x00020000;
 	
 	//Enable timer
 	TIMER0->CTL			 |=0x03; // bit0 to enable and bit 1 to stall on debug
@@ -123,6 +126,29 @@ void TIMER0A_Handler (void){
 	return;
 }
 
+void TIMER3A_Handler (void){
+
+	// rising edge? falling edge?
+	if(GPIOB->DATA & (1<<2)) /*check if rising edge occurs */
+	{
+		rising_edge_current = TIMER3->TAR;     /* save the timestamp */
+		if (rising_edge_current > rising_edge_former){
+			time_period = rising_edge_current - rising_edge_former;
+		}
+	}
+	else /*if falling edge occurs */
+	{	
+		falling_edge = TIMER3->TAR;     /* save the timestamp */
+		if (falling_edge > rising_edge_former){
+			time_width = falling_edge - rising_edge_former;
+		}
+	}
+	
+	
+	
+	rising_edge_former = rising_edge_current;
+	TIMER3->ICR |=0x01; //Clear the interrupt
+}
 
 double Timer3ACapture_PulseWidth(void){
 	uint32_t risingEdge, fallingEdge;
@@ -176,8 +202,8 @@ int main (void){
 	//OutStr(msg);
 
 	while(1){
-		time_period = Timer3ACapture_Period();
-		time_width = Timer3ACapture_PulseWidth();
+		// time_period = Timer3ACapture_Period();
+		// time_width = Timer3ACapture_PulseWidth();
 		time_duty =  time_width/time_period;
 		sprintf(msg,"\r\n %0.2f us, %0.2f us,  %0.2f %% \r\4", time_width, time_period, time_duty);
 		OutStr(msg);

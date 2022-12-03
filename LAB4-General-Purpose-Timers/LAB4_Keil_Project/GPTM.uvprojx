@@ -10,7 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6180000::V6.18::ARMCLANG</pCCUsed>
+      <pCCUsed>6190000::V6.19::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -390,14 +390,14 @@
               <FilePath>.\Pulse_init.h</FilePath>
             </File>
             <File>
-              <FileName>main2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main2.c</FilePath>
-            </File>
-            <File>
               <FileName>OutStr.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\OutStr.s</FilePath>
+            </File>
+            <File>
+              <FileName>main2interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main2interrupt.c</FilePath>
             </File>
           </Files>
         </Group>
