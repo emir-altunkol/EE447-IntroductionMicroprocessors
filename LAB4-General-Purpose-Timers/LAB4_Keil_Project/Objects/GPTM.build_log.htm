@@ -22,12 +22,12 @@ Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
 D:\2022-23\Okul\Dersler\EE447\Experimental Work\LAB4-General-Purpose-Timers\LAB4_Keil_Project\GPTM.uvprojx
-Project File Date:  12/02/2022
+Project File Date:  12/03/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-main.c(7): warning: In file included from...
+main2.c(7): warning: In file included from...
 C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\TM4C123GH6PM.h(298): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
   ^
@@ -160,17 +160,41 @@ C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C12
 C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\TM4C123GH6PM.h(1251): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
   ^
-main.c(14): warning: no previous extern declaration for non-static variable 'count' [-Wmissing-variable-declarations]
+main2.c(30): warning: no previous extern declaration for non-static variable 'count' [-Wmissing-variable-declarations]
 int count = 0;
     ^
-main.c(14): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main2.c(30): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 int count = 0;
 ^
-45 warnings generated.
-compiling main.c...
+main2.c(19): warning: no previous extern declaration for non-static variable 'msg' [-Wmissing-variable-declarations]
+char msg[80];
+     ^
+main2.c(19): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char msg[80];
+^
+main2.c(31): warning: no previous extern declaration for non-static variable 'time_period' [-Wmissing-variable-declarations]
+double time_period;
+       ^
+main2.c(31): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+double time_period;
+^
+main2.c(32): warning: no previous extern declaration for non-static variable 'time_width' [-Wmissing-variable-declarations]
+double time_width;
+       ^
+main2.c(32): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+double time_width;
+^
+main2.c(33): warning: no previous extern declaration for non-static variable 'time_duty' [-Wmissing-variable-declarations]
+double time_duty;
+       ^
+main2.c(33): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+double time_duty;
+^
+49 warnings generated.
+compiling main2.c...
 linking...
-Program Size: Code=940 RO-data=636 RW-data=0 ZI-data=616  
-".\Objects\GPTM.axf" - 0 Error(s), 45 Warning(s).
+Program Size: Code=9748 RO-data=1224 RW-data=0 ZI-data=720  
+".\Objects\GPTM.axf" - 0 Error(s), 49 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -196,9 +220,9 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.1
-      Source file:   Device/Source/ARM/startup_TM4C123.s
-      Source file:   Device/Source/system_TM4C123.c
       Include file:  Device/Include/TM4C123/TM4C123.h
+      Source file:   Device/Source/system_TM4C123.c
+      Source file:   Device/Source/ARM/startup_TM4C123.s
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

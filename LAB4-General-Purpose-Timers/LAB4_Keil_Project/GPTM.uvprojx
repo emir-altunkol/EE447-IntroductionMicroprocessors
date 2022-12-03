@@ -390,9 +390,14 @@
               <FilePath>.\Pulse_init.h</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
+              <FileName>main2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
+              <FilePath>.\main2.c</FilePath>
+            </File>
+            <File>
+              <FileName>OutStr.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\OutStr.s</FilePath>
             </File>
           </Files>
         </Group>
