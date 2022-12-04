@@ -144,26 +144,24 @@ void TIMER3A_Handler (void){
 		}
 	}
 	
-	
-	
 	rising_edge_former = rising_edge_current;
-	TIMER3->ICR |=0x01; //Clear the interrupt
+	TIMER3->ICR |=0x04; //Clear the interrupt
 }
 
 double Timer3ACapture_PulseWidth(void){
 	uint32_t risingEdge, fallingEdge;
-		while(1)
+	while(1)
 	{
     TIMER3->ICR = 4;            /* clear timer0A capture flag */
     while((TIMER3->RIS & (1<<2)) == 0) ;    /* wait till captured */
 	  if(GPIOB->DATA & (1<<2)) /*check if rising edge occurs */
 		{
-    risingEdge = TIMER3->TAR;     /* save the timestamp */
-		/* detect falling edge */
-    TIMER3->ICR = 4;            /* clear timer3A capture flag */
-    while((TIMER3->RIS & (1<<2)) == 0) ;    /* wait till captured */
-    fallingEdge = TIMER3->TAR;     /* save the timestamp */
-		return (((fallingEdge - risingEdge) & 0x00FFFFFF )* 62.5)/1000; /* return the time difference */
+			risingEdge = TIMER3->TAR;     /* save the timestamp */
+			/* detect falling edge */
+			TIMER3->ICR = 4;            /* clear timer3A capture flag */
+			while((TIMER3->RIS & (1<<2)) == 0) ;    /* wait till captured */
+			fallingEdge = TIMER3->TAR;     /* save the timestamp */
+			return (((fallingEdge - risingEdge) & 0x00FFFFFF )* 62.5)/1000; /* return the time difference */
 		}
 	}
 }
