@@ -185,33 +185,33 @@ main2interrupt.c(37): note: declare 'static' if the variable is not intended to 
 uint32_t falling_edge = 0;
 ^
 main2interrupt.c(20): warning: no previous extern declaration for non-static variable 'msg' [-Wmissing-variable-declarations]
-char msg[80];
+char msg[100];
      ^
 main2interrupt.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-char msg[80];
+char msg[100];
 ^
 main2interrupt.c(32): warning: no previous extern declaration for non-static variable 'time_period' [-Wmissing-variable-declarations]
-double time_period;
-       ^
+volatile double time_period;      // Global variables that used in ISR should be volatile
+                ^
 main2interrupt.c(32): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-double time_period;
-^
+volatile double time_period;      // Global variables that used in ISR should be volatile
+         ^
 main2interrupt.c(33): warning: no previous extern declaration for non-static variable 'time_width' [-Wmissing-variable-declarations]
-double time_width;
-       ^
+volatile double time_width;                             // Global variables that used in ISR should be volatile
+                ^
 main2interrupt.c(33): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-double time_width;
-^
+volatile double time_width;                             // Global variables that used in ISR should be volatile
+         ^
 main2interrupt.c(34): warning: no previous extern declaration for non-static variable 'time_duty' [-Wmissing-variable-declarations]
-double time_duty;
-       ^
+volatile double time_duty;                              // Global variables that used in ISR should be volatile
+                ^
 main2interrupt.c(34): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-double time_duty;
-^
+volatile double time_duty;                              // Global variables that used in ISR should be volatile
+         ^
 52 warnings generated.
 compiling main2interrupt.c...
 linking...
-Program Size: Code=9196 RO-data=1224 RW-data=0 ZI-data=728  
+Program Size: Code=9700 RO-data=1224 RW-data=0 ZI-data=752  
 ".\Objects\GPTM.axf" - 0 Error(s), 52 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -239,8 +239,8 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:1.0.1
       Include file:  Device/Include/TM4C123/TM4C123.h
-      Source file:   Device/Source/system_TM4C123.c
       Source file:   Device/Source/ARM/startup_TM4C123.s
+      Source file:   Device/Source/system_TM4C123.c
 Build Time Elapsed:  00:00:01
 </pre>
 </body>
