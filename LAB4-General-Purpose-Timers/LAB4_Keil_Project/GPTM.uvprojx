@@ -395,9 +395,9 @@
               <FilePath>.\OutStr.s</FilePath>
             </File>
             <File>
-              <FileName>main2interrupt.c</FileName>
+              <FileName>main3.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\main2interrupt.c</FilePath>
+              <FilePath>.\main3.c</FilePath>
             </File>
           </Files>
         </Group>
