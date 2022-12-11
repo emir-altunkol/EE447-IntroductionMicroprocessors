@@ -394,6 +394,16 @@
               <FileType>1</FileType>
               <FilePath>.\ADC.c</FilePath>
             </File>
+            <File>
+              <FileName>OutStr.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\OutStr.s</FilePath>
+            </File>
+            <File>
+              <FileName>DELAY100.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\DELAY100.s</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

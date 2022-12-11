@@ -3,8 +3,12 @@
 
 int adc_raw = 0;
 float voltage = 0;
+char charArr[24] ;
 
-extern void DELAY1S(void); 
+extern void DELAY1S(void);
+extern void DELAY100(void);
+extern void OutStr(char*); 
+
 
 void GPIO_init(void);
 void ADC0_init(void);
@@ -23,7 +27,7 @@ void GPIO_init(void){
 	/*PIN Initialization for PF1 (RED LED) as digital out*/
 	SYSCTL->RCGCGPIO |= 0x20; 						/* turn on bus clock for GPIOF */
   GPIOF->DIR       |= 0x02; 						/* set RED pin as a digital output pin */
-  GPIOF->DEN       |= 0x02;  					/* Enable PF1 pin as a digital pin */
+  GPIOF->DEN       |= 0x02;  					  /* Enable PF1 pin as a digital pin */
 	
 	//SCB->CPACR |= 0x00f00000;
 }
@@ -47,31 +51,111 @@ void ADC0_init(void){
 
 }
 
+///PART-1///////////////////////////////////////////////////////////////////////////////////////////////
+//int main(void)
+//{
+//  GPIO_init();
+//	ADC0_init();
+//  while(1)
+//  {
+//			ADC0->PSSI |= (1<<3);        		  /* Enable SS3 conversion or start sampling data from AN0 */
+//			while((ADC0->RIS & 8) == 0) ;     /* Wait untill sample conversion completed*/
+//			adc_raw = ADC0->SSFIFO3; 				  /* read adc coversion result from SS3 FIFO*/
+//			ADC0->ISC = 8;          				  /* clear coversion clear flag bit*/
+//		
+//			//DELAY1S();
+//			__ASM(" BL DELAY100 ");
+//			__ASM(" BL DELAY100 ");
+//			__ASM(" BL DELAY100 ");
+//		  __ASM(" BL DELAY100 ");
+//		  __ASM(" BL DELAY100 ");
+//		
+//			if(adc_raw >= 2048)
+//			GPIOF->DATA  = 0x02;              /* turn on green LED*/
+//			else if(adc_raw < 2048)
+//			GPIOF->DATA  = 0x00;              /* turn off green LED*/
+//    }
+//}
+///PART-1///////////////////////////////////////////////////////////////////////////////////////////////
 
-	
-//	adc_raw = ADC0->SSFIFO3; /* read adc coversion result from SS3 FIFO*/
-//	ADC0->ISC = 8;          /* clear coversion clear flag bit*/
-//  ADC0->PSSI |= (1<<3);        /* Enable SS3 conversion or start sampling data from AN0 */
 
+///PART-2-3///////////////////////////////////////////////////////////////////////////////////////////////
+//int main(void)
+//{
+//  GPIO_init();
+//	ADC0_init();
+//  while(1)
+//  {
+//		ADC0->PSSI |= (1<<3);        		  /* Enable SS3 conversion or start sampling data from AN0 */
+//		while((ADC0->RIS & 8) == 0) ;     /* Wait untill sample conversion completed*/
+//		adc_raw = ADC0->SSFIFO3; 				  /* read adc coversion result from SS3 FIFO*/
+//		ADC0->ISC = 8;          				  /* clear coversion clear flag bit*/
+
+//		if(adc_raw >= 2048)
+//		GPIOF->DATA  = 0x02;              /* turn on green LED*/
+//		else if(adc_raw < 2048)
+//		GPIOF->DATA  = 0x00;              /* turn off green LED*/
+//			
+//		voltage = (adc_raw * 0.0008) - 1.65;
+//		sprintf(charArr, "%.2f", voltage);
+//		OutStr(charArr);
+//		//DELAY1S();
+//		__ASM(" BL DELAY100 ");
+//		__ASM(" BL DELAY100 ");
+//    }
+//}
+///PART-2-3///////////////////////////////////////////////////////////////////////////////////////////////
+
+///PART-4///////////////////////////////////////////////////////////////////////////////////////////////
 int main(void)
 {
   GPIO_init();
 	ADC0_init();
   while(1)
   {
-			ADC0->PSSI |= (1<<3);        /* Enable SS3 conversion or start sampling data from AN0 */
-			while((ADC0->RIS & 8) == 0) ;   /* Wait untill sample conversion completed*/
-			adc_raw = ADC0->SSFIFO3; /* read adc coversion result from SS3 FIFO*/
-			ADC0->ISC = 8;          /* clear coversion clear flag bit*/
-		
-			//DELAY1S();
-			__ASM(" BL DELAY1S ");
-		
-			if(adc_raw >= 2048)
-			GPIOF->DATA  = 0x02; /* turn on green LED*/
-			else if(adc_raw < 2048)
-			GPIOF->DATA  = 0x00; /* turn off green LED*/
+		ADC0->PSSI |= (1<<3);        		  /* Enable SS3 conversion or start sampling data from AN0 */
+		while((ADC0->RIS & 8) == 0) ;     /* Wait untill sample conversion completed*/
+		adc_raw = ADC0->SSFIFO3; 				  /* read adc coversion result from SS3 FIFO*/
+		ADC0->ISC = 8;          				  /* clear coversion clear flag bit*/
+
+		if(adc_raw >= 2048)
+		GPIOF->DATA  = 0x02;              /* turn on green LED*/
+		else if(adc_raw < 2048)
+		GPIOF->DATA  = 0x00;              /* turn off green LED*/
+			
+		voltage = (adc_raw * 0.0008) - 1.65;
+		sprintf(charArr, "\r\n %.2f \r\4", voltage);
+		OutStr(charArr);
+		//DELAY1S();
+		__ASM(" BL DELAY1S ");
     }
 }
+///PART-4///////////////////////////////////////////////////////////////////////////////////////////////
 
+///PART-5///////////////////////////////////////////////////////////////////////////////////////////////
+//int main(void)
+//{
+//  GPIO_init();
+//	ADC0_init();
+//  while(1)
+//  {
+//		ADC0->PSSI |= (1<<3);        		  /* Enable SS3 conversion or start sampling data from AN0 */
+//		while((ADC0->RIS & 8) == 0) ;     /* Wait untill sample conversion completed*/
+//		adc_raw = ADC0->SSFIFO3; 				  /* read adc coversion result from SS3 FIFO*/
+//		ADC0->ISC = 8;          				  /* clear coversion clear flag bit*/
+//			
+//		voltage = (adc_raw * 0.0008);
+//		
+//		if(voltage >= 1.65)
+//		GPIOF->DATA  = 0x02;              /* turn on green LED*/
+//		else if(voltage < 1.65)
+//		GPIOF->DATA  = 0x00;              /* turn off green LED*/
+//		
+//		sprintf(charArr, "\r\n %.2f \r\4", voltage);
+//		OutStr(charArr);
+//		//DELAY1S();
+//		__ASM(" BL DELAY100 ");
+//    }
+//}
+///PART-5///////////////////////////////////////////////////////////////////////////////////////////////
 

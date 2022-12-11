@@ -3,16 +3,16 @@
 ; These directives do not allocate memory
 ;***************************************************************
 ;SYMBOL		DIRECTIVE	VALUE			COMMENT
-D_4_CYCLE	EQU 		4000000			; 16000000
+D_4_CYCLE	EQU 		400000			; 16000000
 ;***************************************************************
 ; Program section
 ;***************************************************************
 ;LABEL		DIRECTIVE	VALUE			COMMENT
             AREA 		main, READONLY, CODE
             THUMB
-            EXPORT 		DELAY1S
+            EXPORT 		DELAY100
 
-DELAY1S	PROC
+DELAY100	PROC
 			PUSH		{R0}			;
 			MOV32		R0, #D_4_CYCLE	;
 d_loop		SUBS		R0, #1			; 1 Cycle
