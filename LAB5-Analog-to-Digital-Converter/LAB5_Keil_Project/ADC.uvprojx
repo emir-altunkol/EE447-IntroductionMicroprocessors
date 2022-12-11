@@ -389,6 +389,11 @@
               <FileType>1</FileType>
               <FilePath>.\ADC.c</FilePath>
             </File>
+            <File>
+              <FileName>DELAY1S.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\DELAY1S.s</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

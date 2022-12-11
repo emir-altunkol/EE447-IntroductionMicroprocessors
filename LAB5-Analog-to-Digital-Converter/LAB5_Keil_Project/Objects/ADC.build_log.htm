@@ -160,26 +160,51 @@ C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C12
 C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\TM4C123GH6PM.h(1251): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
   ^
-ADC.c(17): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+ADC.c(14): warning: no previous prototype for function 'ADC0SS3_Handler' [-Wmissing-prototypes]
+void ADC0SS3_Handler(void){
+     ^
+ADC.c(14): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void ADC0SS3_Handler(void){
+^
+static 
+ADC.c(37): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
     GPIOE->DEN &= ~(1<<3);        /* disable digital function */
                ~~ ^~~~~~~
-ADC.c(21): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+ADC.c(41): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
     ADC0->ACTSS &= ~(1<<3);        /* disable SS3 during configuration */
                 ~~ ^~~~~~~
-ADC.c(22): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+ADC.c(42): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
     ADC0->EMUX &= ~0xF000;    /* software trigger conversion */
                ~~ ^~~~~~~
-ADC.c(29): warning: // comments are not allowed in this language [-Wcomment]
+ADC.c(54): warning: // comments are not allowed in this language [-Wcomment]
    SYSCTL->RCGCGPIO |= 0x20; // turn on bus clock for GPIOF
                              ^
-ADC.c(49): warning: no newline at end of file [-Wnewline-eof]
-//}
-   ^
-49 warnings generated.
+ADC.c(62): warning: implicit conversion loses floating-point precision: 'double' to 'float' [-Wimplicit-float-conversion]
+                         voltage = (adc_value * 0.0008);
+                                 ~  ~~~~~~~~~~^~~~~~~~
+ADC.c(11): warning: no previous extern declaration for non-static variable 'mesg' [-Wmissing-variable-declarations]
+char mesg[24];
+     ^
+ADC.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char mesg[24];
+^
+ADC.c(12): warning: no previous extern declaration for non-static variable 'voltage' [-Wmissing-variable-declarations]
+volatile float voltage;
+               ^
+ADC.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile float voltage;
+         ^
+ADC.c(13): warning: no previous extern declaration for non-static variable 'adc_value' [-Wmissing-variable-declarations]
+volatile unsigned int adc_value;
+                      ^
+ADC.c(13): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile unsigned int adc_value;
+         ^
+53 warnings generated.
 compiling ADC.c...
 linking...
-Program Size: Code=892 RO-data=636 RW-data=0 ZI-data=608  
-".\Objects\ADC.axf" - 0 Error(s), 49 Warning(s).
+Program Size: Code=2020 RO-data=636 RW-data=0 ZI-data=640  
+".\Objects\ADC.axf" - 0 Error(s), 53 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -208,7 +233,7 @@ Package Vendor: Keil
       Source file:   Device/Source/ARM/startup_TM4C123.s
       Include file:  Device/Include/TM4C123/TM4C123.h
       Source file:   Device/Source/system_TM4C123.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
