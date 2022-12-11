@@ -90,7 +90,7 @@ void ADC0_init(void){
 //		while((ADC0->RIS & 8) == 0) ;     /* Wait untill sample conversion completed*/
 //		adc_raw = ADC0->SSFIFO3; 				  /* read adc coversion result from SS3 FIFO*/
 //		ADC0->ISC = 8;          				  /* clear coversion clear flag bit*/
-
+//
 //		if(adc_raw >= 2048)
 //		GPIOF->DATA  = 0x02;              /* turn on green LED*/
 //		else if(adc_raw < 2048)
@@ -98,7 +98,6 @@ void ADC0_init(void){
 //			
 //		voltage = (adc_raw * 0.0008) - 1.65;
 //		sprintf(charArr, "%.2f", voltage);
-//		OutStr(charArr);
 //		//DELAY1S();
 //		__ASM(" BL DELAY100 ");
 //		__ASM(" BL DELAY100 ");
