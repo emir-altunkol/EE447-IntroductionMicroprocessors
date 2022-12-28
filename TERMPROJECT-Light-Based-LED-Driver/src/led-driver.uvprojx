@@ -479,6 +479,11 @@
               <FileType>2</FileType>
               <FilePath>.\RESTORE_SCREEN.s</FilePath>
             </File>
+            <File>
+              <FileName>bar_generator.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\bar_generator.s</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

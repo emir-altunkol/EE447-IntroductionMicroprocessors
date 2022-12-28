@@ -7,7 +7,7 @@
 					ALIGN
 
 char_write_to_array		PROC
-						PUSH{R0-R12,LR} ;R0 array adress,R1 font adress,R2 font index,R4 array start index, R5 font size 8 for fontWide
+						PUSH{R0-R12,LR} ;R0 array adress,R1 font adress,R2 font index,R4 array start index, R5 font size 7 for fontWide
 						MUL R2,R5
 						ADD R2, R2,R1	
 						ADD R0,R4

@@ -3,6 +3,10 @@
 LOSER_ADD			EQU				0x20002020		; counter address
 IDLE_BASE 			EQU			    0x20000500		; memory location to hold idle screen	
 font_adress 		EQU			    0x2000221A		; font location
+					AREA   data, DATA, READONLY
+					THUMB
+					PRESERVE8
+sayilar 			DCB				0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33
 
 					AREA			announceresult,CODE,READONLY
 					THUMB
@@ -10,6 +14,7 @@ font_adress 		EQU			    0x2000221A		; font location
 					EXTERN			char_write_to_array
 					EXTERN			RESTORE_SCREEN
 					EXPORT			AnnounceResult
+					EXTERN 			bar_generator
 					ALIGN
 					ENTRY
 
@@ -19,29 +24,36 @@ AnnounceResult		PROC
 					LDR R0,=LOSER_ADD
 
 					LDR R1,=font_adress
-					MOV R2,#1
-					MOV R4,#5
-					MOV R5,#8
+					MOV R2,#2
+					MOV R4,#14
+					MOV R5,#7
 					BL char_write_to_array    			;R0 array adress,R1 font adress,R2 font index,R4 array start index, R5 font size 8 for fontWide
-					MOV R2,#23
-					MOV R4,#15
-					BL char_write_to_array
-					MOV R2,#5
-					MOV R4,#38
-					BL char_write_to_array
-					MOV R2,#40
-					MOV R4,#29
-					BL char_write_to_array
-					MOV R2,#17
-					MOV R4,#84
-					BL char_write_to_array
+;					MOV R2,#23
+;					MOV R4,#14
+;					BL char_write_to_array
+
+					
+					
+;					mov r4,#0
+;					ldr r5,=sayilar
+;generate_bar				
+;					cmp r4,#84
+;					beq end_bar
+;					
+;					mov r0,r4
+;					ldrb r2,[r5],#1
+;					ldr r3,=LOSER_ADD
+;					
+;					BL bar_generator	;bar x r0,bar 3 blok uzunlukta,r2 data,r3 array location
+;					add r4,#1
+;					b generate_bar
+;end_bar
 					LDR				R0, =LOSER_ADD		; starting address
 					MOV				R3, #504
 					MOV				R5, #0x00
 					MOV				R6, #0x00
-;					LDR				R7, =LOSER_ADD		; ins çalisir
 					
-					BL				RESTORE_SCREEN
+					STRB			R5, [R0]   ; reset first to zero				
 					BL				SCREEN_MAP
 					B				ENDANNOUNCE
 

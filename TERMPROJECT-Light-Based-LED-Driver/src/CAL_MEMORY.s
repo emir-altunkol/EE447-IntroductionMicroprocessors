@@ -20,7 +20,6 @@
 ;LABEL		DIRECTIVE	VALUE			COMMENT
 			AREA        routines, CODE, READONLY
 			THUMB
-			EXTERN		AnnounceResult
 			EXPORT		CAL_MEMORY
 				
 ;***************************************************************		
