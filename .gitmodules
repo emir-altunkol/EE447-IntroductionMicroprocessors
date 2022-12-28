@@ -1,3 +1,6 @@
 [submodule "TERMPROJECT-Light-Based-LED-Driver/supplements/NOKIA5110_TEXT/src"]
 	path = TERMPROJECT-Light-Based-LED-Driver/supplements/NOKIA5110_TEXT
 	url = https://github.com/gavinlyonsrepo/NOKIA5110_TEXT.git
+[submodule "TERMPROJECT-Light-Based-LED-Driver/supplements/TM4C123_temperature"]
+	path = TERMPROJECT-Light-Based-LED-Driver/supplements/TM4C123_temperature
+	url = https://github.com/kitsook/TM4C123_temperature.git

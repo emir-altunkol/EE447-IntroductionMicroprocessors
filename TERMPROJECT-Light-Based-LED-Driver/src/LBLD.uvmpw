@@ -8,12 +8,30 @@
   <WorkspaceName>WorkSpace</WorkspaceName>
 
   <project>
-    <PathAndName>..\..\LAB5-Analog-to-Digital-Converter\LAB5_Keil_Project\ADC.uvprojx</PathAndName>
+    <PathAndName>.\led-driver.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
+    <NodeIsExpanded>1</NodeIsExpanded>
+  </project>
+
+  <project>
+    <PathAndName>..\..\LAB5-Analog-to-Digital-Converter\LAB5_Keil_Project\ADC.uvprojx</PathAndName>
   </project>
 
   <project>
     <PathAndName>..\..\LAB4-General-Purpose-Timers\LAB4_Keil_Project\GPTM.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>C:\Users\ozgur\Desktop\src\battleship.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>..\..\LAB3-Stepper-Motor-Drive\LAB3_Keil_Project\Stepper_Drive.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>C:\Users\ozgur\Desktop\Deployment\Deployment.uvprojx</PathAndName>
+    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
 </ProjectWorkspace>

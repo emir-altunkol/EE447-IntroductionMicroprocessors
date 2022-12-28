@@ -10,6 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>6180000::V6.18::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -259,17 +260,17 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
@@ -279,7 +280,7 @@
                 <Size>0x40000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT5>
@@ -328,7 +329,7 @@
             <uC99>1</uC99>
             <uGnu>1</uGnu>
             <useXO>0</useXO>
-            <v6Lang>1</v6Lang>
+            <v6Lang>2</v6Lang>
             <v6LangP>1</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
@@ -382,6 +383,88 @@
       <Groups>
         <Group>
           <GroupName>Source Group 1</GroupName>
+          <Files>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCD.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LCD.h</FilePath>
+            </File>
+            <File>
+              <FileName>Terminal6.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Terminal6.h</FilePath>
+            </File>
+            <File>
+              <FileName>Terminal12.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Terminal12.h</FilePath>
+            </File>
+            <File>
+              <FileName>N5510_INIT.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\N5510_INIT.s</FilePath>
+            </File>
+            <File>
+              <FileName>DELAY50.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\DELAY50.s</FilePath>
+            </File>
+            <File>
+              <FileName>NOT_READY.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\NOT_READY.s</FilePath>
+            </File>
+            <File>
+              <FileName>PORTA_SSI0_INIT.S</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\PORTA_SSI0_INIT.S</FilePath>
+            </File>
+            <File>
+              <FileName>LOSER_ROM.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\LOSER_ROM.s</FilePath>
+            </File>
+            <File>
+              <FileName>WRITE_CHAR.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\WRITE_CHAR.s</FilePath>
+            </File>
+            <File>
+              <FileName>AnnounceResult.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\AnnounceResult.s</FilePath>
+            </File>
+            <File>
+              <FileName>FIFO_FULL.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\FIFO_FULL.s</FilePath>
+            </File>
+            <File>
+              <FileName>CAL_MEMORY.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\CAL_MEMORY.s</FilePath>
+            </File>
+            <File>
+              <FileName>SCREEN_MAP.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\SCREEN_MAP.s</FilePath>
+            </File>
+            <File>
+              <FileName>SET_XY.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\SET_XY.s</FilePath>
+            </File>
+            <File>
+              <FileName>SCREEN_ROM.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\SCREEN_ROM.s</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
