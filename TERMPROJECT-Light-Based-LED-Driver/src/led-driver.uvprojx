@@ -329,7 +329,7 @@
             <uC99>1</uC99>
             <uGnu>1</uGnu>
             <useXO>0</useXO>
-            <v6Lang>1</v6Lang>
+            <v6Lang>2</v6Lang>
             <v6LangP>1</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
@@ -468,6 +468,16 @@
               <FileName>START_SCREEN.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\START_SCREEN.s</FilePath>
+            </File>
+            <File>
+              <FileName>char_write_to_array.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\char_write_to_array.s</FilePath>
+            </File>
+            <File>
+              <FileName>RESTORE_SCREEN.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\RESTORE_SCREEN.s</FilePath>
             </File>
           </Files>
         </Group>

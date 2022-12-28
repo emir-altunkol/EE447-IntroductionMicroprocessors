@@ -1,70 +1,13 @@
-# 1 "RTE/Device/TM4C123GH6PM/system_TM4C123.c"
+# 1 "main.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 386 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "RTE/Device/TM4C123GH6PM/system_TM4C123.c" 2
-# 12 "RTE/Device/TM4C123GH6PM/system_TM4C123.c"
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h" 1 3
-# 56 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h" 3
-typedef signed char int8_t;
-typedef signed short int int16_t;
-typedef signed int int32_t;
-typedef signed long long int int64_t;
-
-
-typedef unsigned char uint8_t;
-typedef unsigned short int uint16_t;
-typedef unsigned int uint32_t;
-typedef unsigned long long int uint64_t;
-
-
-
-
-
-typedef signed char int_least8_t;
-typedef signed short int int_least16_t;
-typedef signed int int_least32_t;
-typedef signed long long int int_least64_t;
-
-
-typedef unsigned char uint_least8_t;
-typedef unsigned short int uint_least16_t;
-typedef unsigned int uint_least32_t;
-typedef unsigned long long int uint_least64_t;
-
-
-
-
-typedef signed int int_fast8_t;
-typedef signed int int_fast16_t;
-typedef signed int int_fast32_t;
-typedef signed long long int int_fast64_t;
-
-
-typedef unsigned int uint_fast8_t;
-typedef unsigned int uint_fast16_t;
-typedef unsigned int uint_fast32_t;
-typedef unsigned long long int uint_fast64_t;
-
-
-
-
-
-
-typedef signed int intptr_t;
-typedef unsigned int uintptr_t;
-
-
-
-typedef signed long long intmax_t;
-typedef unsigned long long uintmax_t;
-# 13 "RTE/Device/TM4C123GH6PM/system_TM4C123.c" 2
-# 1 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123.h" 1
-# 98 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123.h"
-# 1 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h" 1
-# 54 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 1 "main.c" 2
+# 24 "main.c"
+# 1 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h" 1
+# 54 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef enum {
 
   Reset_IRQn = -15,
@@ -159,9 +102,69 @@ typedef enum {
   PWM1_3_IRQn = 137,
   PWM1_FAULT_IRQn = 138
 } IRQn_Type;
-# 167 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 167 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 # 1 "C:/Users/ozgur/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include\\core_cm4.h" 1
 # 29 "C:/Users/ozgur/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include\\core_cm4.h" 3
+
+
+
+
+
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h" 1 3
+# 56 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h" 3
+typedef signed char int8_t;
+typedef signed short int int16_t;
+typedef signed int int32_t;
+typedef signed long long int int64_t;
+
+
+typedef unsigned char uint8_t;
+typedef unsigned short int uint16_t;
+typedef unsigned int uint32_t;
+typedef unsigned long long int uint64_t;
+
+
+
+
+
+typedef signed char int_least8_t;
+typedef signed short int int_least16_t;
+typedef signed int int_least32_t;
+typedef signed long long int int_least64_t;
+
+
+typedef unsigned char uint_least8_t;
+typedef unsigned short int uint_least16_t;
+typedef unsigned int uint_least32_t;
+typedef unsigned long long int uint_least64_t;
+
+
+
+
+typedef signed int int_fast8_t;
+typedef signed int int_fast16_t;
+typedef signed int int_fast32_t;
+typedef signed long long int int_fast64_t;
+
+
+typedef unsigned int uint_fast8_t;
+typedef unsigned int uint_fast16_t;
+typedef unsigned int uint_fast32_t;
+typedef unsigned long long int uint_fast64_t;
+
+
+
+
+
+
+typedef signed int intptr_t;
+typedef unsigned int uintptr_t;
+
+
+
+typedef signed long long intmax_t;
+typedef unsigned long long uintmax_t;
+# 35 "C:/Users/ozgur/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include\\core_cm4.h" 2 3
 # 63 "C:/Users/ozgur/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include\\core_cm4.h" 3
 # 1 "C:/Users/ozgur/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include/cmsis_version.h" 1 3
 # 29 "C:/Users/ozgur/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include/cmsis_version.h" 3
@@ -1038,7 +1041,7 @@ static __inline int32_t ITM_CheckChar (void)
     return (1);
   }
 }
-# 168 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h" 2
+# 168 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h" 2
 # 1 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/system_TM4C123.h" 1
 # 35 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/system_TM4C123.h"
 extern uint32_t SystemCoreClock;
@@ -1046,8 +1049,8 @@ extern uint32_t SystemCoreClock;
 extern void SystemInit (void);
 # 58 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/system_TM4C123.h"
 extern void SystemCoreClockUpdate (void);
-# 169 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h" 2
-# 208 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 169 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h" 2
+# 208 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t LOAD;
   volatile uint32_t VALUE;
@@ -1060,7 +1063,7 @@ typedef struct {
   volatile const uint32_t RESERVED1[505];
   volatile uint32_t LOCK;
 } WATCHDOG0_Type;
-# 231 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 231 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile const uint32_t RESERVED[255];
   volatile uint32_t DATA;
@@ -1089,7 +1092,7 @@ typedef struct {
   volatile uint32_t ADCCTL;
   volatile uint32_t DMACTL;
 } GPIOA_Type;
-# 270 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 270 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t CR0;
   volatile uint32_t CR1;
@@ -1104,7 +1107,7 @@ typedef struct {
   volatile const uint32_t RESERVED[1000];
   volatile uint32_t CC;
 } SSI0_Type;
-# 295 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 295 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t DR;
 
@@ -1134,7 +1137,7 @@ typedef struct {
   volatile const uint32_t RESERVED4;
   volatile uint32_t CC;
 } UART0_Type;
-# 335 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 335 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t MSA;
 
@@ -1172,7 +1175,7 @@ typedef struct {
   volatile uint32_t PP;
   volatile uint32_t PC;
 } I2C0_Type;
-# 383 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 383 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t CTL;
   volatile uint32_t SYNC;
@@ -1267,7 +1270,7 @@ typedef struct {
   volatile const uint32_t RESERVED5[397];
   volatile uint32_t PP;
 } PWM0_Type;
-# 488 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 488 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t CTL;
   volatile uint32_t STAT;
@@ -1281,7 +1284,7 @@ typedef struct {
   volatile uint32_t RIS;
   volatile uint32_t ISC;
 } QEI0_Type;
-# 512 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 512 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t CFG;
   volatile uint32_t TAMR;
@@ -1313,7 +1316,7 @@ typedef struct {
   volatile const uint32_t RESERVED1[981];
   volatile uint32_t PP;
 } TIMER0_Type;
-# 554 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 554 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t CFG;
   volatile uint32_t TAMR;
@@ -1345,7 +1348,7 @@ typedef struct {
   volatile const uint32_t RESERVED1[981];
   volatile uint32_t PP;
 } WTIMER0_Type;
-# 596 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 596 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t ACTSS;
   volatile uint32_t RIS;
@@ -1415,7 +1418,7 @@ typedef struct {
   volatile uint32_t PC;
   volatile uint32_t CC;
 } ADC0_Type;
-# 676 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 676 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t ACMIS;
   volatile uint32_t ACRIS;
@@ -1431,7 +1434,7 @@ typedef struct {
   volatile const uint32_t RESERVED3[990];
   volatile uint32_t PP;
 } COMP_Type;
-# 702 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 702 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t CTL;
   volatile uint32_t STS;
@@ -1485,7 +1488,7 @@ typedef struct {
   volatile uint32_t MSG1VAL;
   volatile uint32_t MSG2VAL;
 } CAN0_Type;
-# 766 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 766 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint8_t FADDR;
   volatile uint8_t POWER;
@@ -1865,7 +1868,7 @@ typedef struct {
   volatile const uint32_t RESERVED43[731];
   volatile uint32_t PP;
 } USB0_Type;
-# 1156 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 1156 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t EESIZE;
   volatile uint32_t EEBLOCK;
@@ -1889,14 +1892,14 @@ typedef struct {
   volatile const uint32_t RESERVED4[975];
   volatile uint32_t PP;
 } EEPROM_Type;
-# 1190 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 1190 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t RIS;
   volatile uint32_t IM;
   volatile uint32_t MIS;
   volatile uint32_t IC;
 } SYSEXC_Type;
-# 1207 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 1207 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t RTCC;
   volatile uint32_t RTCM0;
@@ -1912,7 +1915,7 @@ typedef struct {
   volatile const uint32_t RESERVED1;
   volatile uint32_t DATA;
 } HIB_Type;
-# 1233 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 1233 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t FMA;
   volatile uint32_t FMD;
@@ -1955,7 +1958,7 @@ typedef struct {
   volatile uint32_t FMPPE2;
   volatile uint32_t FMPPE3;
 } FLASH_CTRL_Type;
-# 1286 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 1286 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t DID0;
   volatile uint32_t DID1;
@@ -2150,7 +2153,7 @@ typedef struct {
   volatile uint32_t PREEPROM;
   volatile uint32_t PRWTIMER;
 } SYSCTL_Type;
-# 1491 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123/TM4C123GH6PM.h"
+# 1491 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123GH6PM.h"
 typedef struct {
   volatile uint32_t STAT;
   volatile uint32_t CFG;
@@ -2179,154 +2182,462 @@ typedef struct {
   volatile uint32_t CHMAP2;
   volatile uint32_t CHMAP3;
 } UDMA_Type;
-# 99 "C:/Users/ozgur/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123\\TM4C123.h" 2
-# 14 "RTE/Device/TM4C123GH6PM/system_TM4C123.c" 2
-# 421 "RTE/Device/TM4C123GH6PM/system_TM4C123.c"
-uint32_t SystemCoreClock = ((400000000UL) / (((( ((4 - 1) << 23) | (1 << 22) | (1 << 20) | (7 << 17) | (0 << 13) | (0 << 11) | (21 << 6) | (0 << 4) | (1 << 1) | (0 << 1))>>23) & (0x0F)) + 1) / 2);
-# 431 "RTE/Device/TM4C123GH6PM/system_TM4C123.c"
-__inline static uint32_t getOscClk (uint32_t xtal, uint32_t oscSrc) {
-  uint32_t oscClk = (16000000UL);
+# 25 "main.c" 2
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 1 3
+# 53 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+    typedef unsigned int size_t;
+# 68 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+    typedef __builtin_va_list __va_list;
+# 87 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+typedef struct __fpos_t_struct {
+    unsigned long long int __pos;
 
-  switch (oscSrc) {
-    case 0:
-      switch (xtal) {
-        case 0x0:
-          oscClk = 1000000UL;
-          break;
-        case 0x1:
-          oscClk = 1843200UL;
-          break;
-        case 0x2:
-          oscClk = 2000000UL;
-          break;
-        case 0x3:
-          oscClk = 2457600UL;
-          break;
-        case 0x4:
-          oscClk = 3579545UL;
-          break;
-        case 0x5:
-          oscClk = 3686400UL;
-          break;
-        case 0x6:
-          oscClk = 4000000UL;
-          break;
-        case 0x7:
-          oscClk = 4096000UL;
-          break;
-        case 0x8:
-          oscClk = 4915200UL;
-          break;
-        case 0x9:
-          oscClk = 5000000UL;
-          break;
-        case 0xA:
-          oscClk = 5120000UL;
-          break;
-        case 0xB:
-          oscClk = 6000000UL;
-          break;
-        case 0xC:
-          oscClk = 6144000UL;
-          break;
-        case 0xD:
-          oscClk = 7372800UL;
-          break;
-        case 0xE:
-          oscClk = 8000000UL;
-          break;
-        case 0xF:
-          oscClk = 8192000UL;
-          break;
-        case 0x10:
-          oscClk = 10000000UL;
-          break;
-        case 0x11:
-          oscClk = 12000000UL;
-          break;
-        case 0x12:
-          oscClk = 12288000UL;
-          break;
-        case 0x13:
-          oscClk = 13560000UL;
-          break;
-        case 0x14:
-          oscClk = 14318180UL;
-          break;
-        case 0x15:
-          oscClk = 16000000UL;
-          break;
-        case 0x16:
-          oscClk = 16384000UL;
-          break;
-       }
-      break;
-    case 1:
-      oscClk = (16000000UL);
-      break;
-    case 2:
-      oscClk = (16000000UL)/4;
-      break;
-    case 3:
-      oscClk = ( 30000UL);
-      break;
+
+
+
+
+    struct {
+        unsigned int __state1, __state2;
+    } __mbstate;
+} fpos_t;
+# 108 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+typedef struct __FILE FILE;
+# 138 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern FILE __stdin, __stdout, __stderr;
+extern FILE *__aeabi_stdin, *__aeabi_stdout, *__aeabi_stderr;
+# 224 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int remove(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int rename(const char * , const char * ) __attribute__((__nonnull__(1,2)));
+# 243 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) FILE *tmpfile(void);
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) char *tmpnam(char * );
+# 265 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int fclose(FILE * ) __attribute__((__nonnull__(1)));
+# 275 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int fflush(FILE * );
+# 285 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) FILE *fopen(const char * __restrict ,
+                           const char * __restrict ) __attribute__((__nonnull__(1,2)));
+# 329 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) FILE *freopen(const char * __restrict ,
+                    const char * __restrict ,
+                    FILE * __restrict ) __attribute__((__nonnull__(2,3)));
+# 342 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) void setbuf(FILE * __restrict ,
+                    char * __restrict ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int setvbuf(FILE * __restrict ,
+                   char * __restrict ,
+                   int , size_t ) __attribute__((__nonnull__(1)));
+# 370 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int fprintf(FILE * __restrict ,
+                    const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
+# 393 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int _fprintf(FILE * __restrict ,
+                     const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int printf(const char * __restrict , ...) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int _printf(const char * __restrict , ...) __attribute__((__nonnull__(1)));
+
+
+
+
+
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int sprintf(char * __restrict , const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+
+
+
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int _sprintf(char * __restrict , const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int __ARM_snprintf(char * __restrict , size_t ,
+                     const char * __restrict , ...) __attribute__((__nonnull__(3)));
+
+
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int snprintf(char * __restrict , size_t ,
+                     const char * __restrict , ...) __attribute__((__nonnull__(3)));
+# 460 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int _snprintf(char * __restrict , size_t ,
+                      const char * __restrict , ...) __attribute__((__nonnull__(3)));
+
+
+
+
+
+#pragma __scanf_args
+extern __attribute__((__nothrow__)) int fscanf(FILE * __restrict ,
+                    const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
+# 503 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+#pragma __scanf_args
+extern __attribute__((__nothrow__)) int _fscanf(FILE * __restrict ,
+                     const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+#pragma __scanf_args
+extern __attribute__((__nothrow__)) int scanf(const char * __restrict , ...) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+
+
+#pragma __scanf_args
+extern __attribute__((__nothrow__)) int _scanf(const char * __restrict , ...) __attribute__((__nonnull__(1)));
+
+
+
+
+
+#pragma __scanf_args
+extern __attribute__((__nothrow__)) int sscanf(const char * __restrict ,
+                    const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
+# 541 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+#pragma __scanf_args
+extern __attribute__((__nothrow__)) int _sscanf(const char * __restrict ,
+                     const char * __restrict , ...) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int vfscanf(FILE * __restrict , const char * __restrict , __va_list) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) int vscanf(const char * __restrict , __va_list) __attribute__((__nonnull__(1)));
+extern __attribute__((__nothrow__)) int vsscanf(const char * __restrict , const char * __restrict , __va_list) __attribute__((__nonnull__(1,2)));
+
+extern __attribute__((__nothrow__)) int _vfscanf(FILE * __restrict , const char * __restrict , __va_list) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) int _vscanf(const char * __restrict , __va_list) __attribute__((__nonnull__(1)));
+extern __attribute__((__nothrow__)) int _vsscanf(const char * __restrict , const char * __restrict , __va_list) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) int __ARM_vsscanf(const char * __restrict , const char * __restrict , __va_list) __attribute__((__nonnull__(1,2)));
+
+extern __attribute__((__nothrow__)) int vprintf(const char * __restrict , __va_list ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int _vprintf(const char * __restrict , __va_list ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) int vfprintf(FILE * __restrict ,
+                    const char * __restrict , __va_list ) __attribute__((__nonnull__(1,2)));
+# 584 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int vsprintf(char * __restrict ,
+                     const char * __restrict , __va_list ) __attribute__((__nonnull__(1,2)));
+# 594 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int __ARM_vsnprintf(char * __restrict , size_t ,
+                     const char * __restrict , __va_list ) __attribute__((__nonnull__(3)));
+
+extern __attribute__((__nothrow__)) int vsnprintf(char * __restrict , size_t ,
+                     const char * __restrict , __va_list ) __attribute__((__nonnull__(3)));
+# 609 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int _vsprintf(char * __restrict ,
+                      const char * __restrict , __va_list ) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) int _vfprintf(FILE * __restrict ,
+                     const char * __restrict , __va_list ) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) int _vsnprintf(char * __restrict , size_t ,
+                      const char * __restrict , __va_list ) __attribute__((__nonnull__(3)));
+
+
+
+
+
+
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int asprintf(char ** , const char * __restrict , ...) __attribute__((__nonnull__(2)));
+extern __attribute__((__nothrow__)) int vasprintf(char ** , const char * __restrict , __va_list ) __attribute__((__nonnull__(2)));
+
+#pragma __printf_args
+extern __attribute__((__nothrow__)) int __ARM_asprintf(char ** , const char * __restrict , ...) __attribute__((__nonnull__(2)));
+extern __attribute__((__nothrow__)) int __ARM_vasprintf(char ** , const char * __restrict , __va_list ) __attribute__((__nonnull__(2)));
+# 649 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int fgetc(FILE * ) __attribute__((__nonnull__(1)));
+# 659 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) char *fgets(char * __restrict , int ,
+                    FILE * __restrict ) __attribute__((__nonnull__(1,3)));
+# 673 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int fputc(int , FILE * ) __attribute__((__nonnull__(2)));
+# 683 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int fputs(const char * __restrict , FILE * __restrict ) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int getc(FILE * ) __attribute__((__nonnull__(1)));
+# 704 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+    extern __attribute__((__nothrow__)) int (getchar)(void);
+# 713 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) char *gets(char * ) __attribute__((__nonnull__(1)));
+# 725 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int putc(int , FILE * ) __attribute__((__nonnull__(2)));
+# 737 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+    extern __attribute__((__nothrow__)) int (putchar)(int );
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int puts(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int ungetc(int , FILE * ) __attribute__((__nonnull__(2)));
+# 778 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) size_t fread(void * __restrict ,
+                    size_t , size_t , FILE * __restrict ) __attribute__((__nonnull__(1,4)));
+# 794 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) size_t __fread_bytes_avail(void * __restrict ,
+                    size_t , FILE * __restrict ) __attribute__((__nonnull__(1,3)));
+# 810 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) size_t fwrite(const void * __restrict ,
+                    size_t , size_t , FILE * __restrict ) __attribute__((__nonnull__(1,4)));
+# 822 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int fgetpos(FILE * __restrict , fpos_t * __restrict ) __attribute__((__nonnull__(1,2)));
+# 833 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int fseek(FILE * , long int , int ) __attribute__((__nonnull__(1)));
+# 850 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int fsetpos(FILE * __restrict , const fpos_t * __restrict ) __attribute__((__nonnull__(1,2)));
+# 863 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) long int ftell(FILE * ) __attribute__((__nonnull__(1)));
+# 877 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) void rewind(FILE * ) __attribute__((__nonnull__(1)));
+# 886 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) void clearerr(FILE * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int feof(FILE * ) __attribute__((__nonnull__(1)));
+
+
+
+
+extern __attribute__((__nothrow__)) int ferror(FILE * ) __attribute__((__nonnull__(1)));
+
+
+
+
+extern __attribute__((__nothrow__)) void perror(const char * );
+# 917 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnull__(1)));
+
+
+
+extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
+extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
+# 26 "main.c" 2
+
+
+
+extern void PORTA_SSI0_INIT(void) ;
+extern void N5110_INIT(void) ;
+
+extern void LOSER_ROM(void) ;
+extern void SCREEN_ROM(void);
+extern void AnnounceResult(void) ;
+
+unsigned char * ahmet = (unsigned char*)0x20002020;
+unsigned char * font_adress = (unsigned char*)0x2000221A;
+
+
+static unsigned char NOKIA_DICK [] = {
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0xC0, 0xC0, 0xC0, 0xE0, 0x70, 0x70, 0x30, 0x30, 0x38, 0x18, 0x18, 0x1C, 0x0C, 0x0C,
+0x0E, 0x06, 0x06, 0x07, 0x03, 0x03, 0x03, 0x83, 0x83, 0x83, 0xC3, 0xC3, 0xC3, 0xE3, 0xF3, 0x77,
+0x3E, 0xFC, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x80, 0xE0, 0xF0, 0x38, 0x18, 0x1C, 0x0E, 0x06, 0x07, 0x83, 0x83, 0x03, 0x03,
+0x03, 0x03, 0x07, 0x0E, 0xFC, 0xF8, 0xC0, 0x00, 0x80, 0x80, 0xC0, 0xE0, 0x60, 0x70, 0x30, 0x38,
+0x1C, 0x0C, 0x0C, 0x0E, 0x06, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00,
+0x00, 0x00, 0x80, 0xE0, 0xFC, 0x3F, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0x03, 0x01, 0x00, 0x00, 0x00, 0x60, 0x60, 0x00, 0x00,
+0xC1, 0xC1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x0F, 0x07, 0x03, 0x03, 0x01, 0x01, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0xC0, 0xC0, 0xE0, 0x60, 0x70, 0x30,
+0x38, 0x18, 0x1C, 0x0C, 0x0E, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x0F, 0x1E, 0x38, 0x70, 0xE0, 0xC0,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18,
+0x18, 0x00, 0x00, 0x00, 0x00, 0x30, 0x30, 0xF0, 0xF0, 0xB0, 0x38, 0x18, 0x18, 0x18, 0x18, 0x18,
+0x18, 0x18, 0x1C, 0x0C, 0x0C, 0x0E, 0x06, 0x06, 0x06, 0x07, 0x03, 0x03, 0x03, 0x01, 0x01, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3C, 0x7C, 0x70, 0x60,
+0x60, 0x60, 0xE3, 0xC3, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xE0, 0xF0, 0x7F, 0x1F, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+# 83 "main.c"
+const unsigned char FontWide[59][8] = {
+    {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+    {0x00, 0x00, 0x00, 0x5f, 0x00, 0x00, 0x00, 0x00},
+    {0x00, 0x03, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00},
+    {0x0a, 0x1f, 0x0a, 0x1f, 0x0a, 0x00, 0x00, 0x00},
+    {0x24, 0x2a, 0x2a, 0x7f, 0x2a, 0x2a, 0x12, 0x00},
+    {0x00, 0x47, 0x25, 0x17, 0x08, 0x74, 0x52, 0x71},
+    {0x00, 0x36, 0x49, 0x49, 0x49, 0x41, 0x41, 0x38},
+    {0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00},
+    {0x00, 0x3e, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00},
+    {0x41, 0x3e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+    {0x04, 0x15, 0x0e, 0x15, 0x04, 0x00, 0x00, 0x00},
+    {0x08, 0x08, 0x3e, 0x08, 0x08, 0x00, 0x00, 0x00},
+    {0x00, 0x00, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00},
+    {0x08, 0x08, 0x08, 0x08, 0x08, 0x00, 0x00, 0x00},
+    {0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+    {0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01, 0x00},
+    {0x00, 0x3e, 0x61, 0x51, 0x49, 0x45, 0x43, 0x3e},
+    {0x00, 0x00, 0x01, 0x01, 0x7e, 0x00, 0x00, 0x00},
+    {0x00, 0x71, 0x49, 0x49, 0x49, 0x49, 0x49, 0x46},
+    {0x41, 0x49, 0x49, 0x49, 0x49, 0x49, 0x36, 0x00},
+    {0x00, 0x0f, 0x10, 0x10, 0x10, 0x10, 0x10, 0x7f},
+    {0x00, 0x4f, 0x49, 0x49, 0x49, 0x49, 0x49, 0x31},
+    {0x00, 0x3e, 0x49, 0x49, 0x49, 0x49, 0x49, 0x30},
+    {0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x7e, 0x00},
+    {0x00, 0x36, 0x49, 0x49, 0x49, 0x49, 0x49, 0x36},
+    {0x00, 0x06, 0x49, 0x49, 0x49, 0x49, 0x49, 0x3e},
+    {0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00},
+    {0x00, 0x34, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00},
+    {0x08, 0x14, 0x22, 0x00, 0x00, 0x00, 0x00, 0x00},
+    {0x14, 0x14, 0x14, 0x14, 0x14, 0x00, 0x00, 0x00},
+    {0x22, 0x14, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00},
+    {0x00, 0x06, 0x01, 0x01, 0x59, 0x09, 0x09, 0x06},
+    {0x00, 0x3e, 0x41, 0x5d, 0x55, 0x5d, 0x51, 0x5e},
+    {0x00, 0x7e, 0x01, 0x09, 0x09, 0x09, 0x09, 0x7e},
+    {0x00, 0x7f, 0x41, 0x49, 0x49, 0x49, 0x49, 0x36},
+    {0x00, 0x3e, 0x41, 0x41, 0x41, 0x41, 0x41, 0x22},
+    {0x00, 0x7f, 0x41, 0x41, 0x41, 0x41, 0x41, 0x3e},
+    {0x00, 0x3e, 0x49, 0x49, 0x49, 0x49, 0x49, 0x41},
+    {0x00, 0x7e, 0x09, 0x09, 0x09, 0x09, 0x09, 0x01},
+    {0x00, 0x3e, 0x41, 0x49, 0x49, 0x49, 0x49, 0x79},
+    {0x00, 0x7f, 0x08, 0x08, 0x08, 0x08, 0x08, 0x7f},
+    {0x00, 0x00, 0x00, 0x00, 0x7F, 0x00, 0x00, 0x00},
+    {0x00, 0x38, 0x40, 0x40, 0x41, 0x41, 0x41, 0x3f},
+    {0x00, 0x7f, 0x08, 0x08, 0x08, 0x0c, 0x0a, 0x71},
+    {0x00, 0x3f, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40},
+    {0x00, 0x7e, 0x01, 0x01, 0x7e, 0x01, 0x01, 0x7e},
+    {0x00, 0x7e, 0x01, 0x01, 0x3e, 0x40, 0x40, 0x3f},
+    {0x00, 0x3e, 0x41, 0x41, 0x41, 0x41, 0x41, 0x3e},
+    {0x00, 0x7e, 0x09, 0x09, 0x09, 0x09, 0x09, 0x06},
+    {0x00, 0x3e, 0x41, 0x41, 0x71, 0x51, 0x51, 0x7e},
+    {0x00, 0x7e, 0x01, 0x31, 0x49, 0x49, 0x49, 0x46},
+    {0x00, 0x46, 0x49, 0x49, 0x49, 0x49, 0x49, 0x31},
+    {0x01, 0x01, 0x01, 0x7f, 0x01, 0x01, 0x01, 0x00},
+    {0x00, 0x3f, 0x40, 0x40, 0x40, 0x40, 0x40, 0x3f},
+    {0x00, 0x0f, 0x10, 0x20, 0x40, 0x20, 0x10, 0x0f},
+    {0x00, 0x3f, 0x40, 0x40, 0x3f, 0x40, 0x40, 0x3f},
+    {0x00, 0x63, 0x14, 0x08, 0x08, 0x08, 0x14, 0x63},
+    {0x00, 0x07, 0x08, 0x08, 0x78, 0x08, 0x08, 0x07},
+    {0x00, 0x71, 0x49, 0x49, 0x49, 0x49, 0x49, 0x47},
+};
+# 230 "main.c"
+static unsigned int i = 0;
+static unsigned int j = 0;
+
+int main (void){
+ PORTA_SSI0_INIT();
+ N5110_INIT();
+
+
+
+ for ( i =0; i < 504;i++ ){
+
+ *(ahmet+i) = 0;
+ }
+ *(ahmet)=0;
+
+ for ( i =0; i < 59;i++ ){
+  for ( j =0; j < 8;j++ ){
+  *(font_adress+i*8+j) = FontWide[i][j];
   }
-
-  return oscClk;
-}
-
-void SystemCoreClockUpdate (void)
-{
-    uint32_t rcc, rcc2;
+ }
+# 265 "main.c"
+ AnnounceResult();
 
 
-    rcc = ((SYSCTL_Type *) 0x400FE000UL)->RCC;
-    rcc2 = ((SYSCTL_Type *) 0x400FE000UL)->RCC2;
-
-
-    if (rcc2 & (1UL<<31)) {
-
-      if (rcc2 & (1UL<<11)) {
-        SystemCoreClock = getOscClk (((rcc>>6) & 0x0F),((rcc2>>4) & 0x07));
-      } else {
-        SystemCoreClock = (400000000UL);
-      }
-      if (rcc & (1UL<<22)) {
-        if (rcc2 & (1UL<<11)) {
-          SystemCoreClock = SystemCoreClock / (((rcc2>>23) & (0x3F)) + 1);
-        } else {
-          SystemCoreClock = SystemCoreClock / (((rcc2>>23) & (0x3F)) + 1) / 2;
-        }
-      }
-    } else {
-
-      if (rcc & (1UL<<11)) {
-        SystemCoreClock = getOscClk (((rcc>>6) & 0x1F),((rcc>>4) & 0x03));
-      } else {
-        SystemCoreClock = (400000000UL);
-      }
-
-      if (rcc & (1UL<<22)) {
-
-        if (rcc & (1UL<<11)) {
-
-          SystemCoreClock = SystemCoreClock / (((rcc>>23) & (0x0F)) + 1);
-        } else {
-          SystemCoreClock = SystemCoreClock / (((rcc>>23) & (0x0F)) + 1) / 2;
-        }
-      }
-    }
-}
-# 574 "RTE/Device/TM4C123GH6PM/system_TM4C123.c"
-void SystemInit (void)
-{
-
-
-
-
-
-
-    ((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->CPACR |= ((3UL << 10*2) |
-                   (3UL << 11*2) );
-# 610 "RTE/Device/TM4C123GH6PM/system_TM4C123.c"
+ while(1){
+ }
 }
