@@ -173,7 +173,7 @@
             <AdsLven>1</AdsLven>
             <AdsLsxf>1</AdsLsxf>
             <RvctClst>0</RvctClst>
-            <GenPPlst>0</GenPPlst>
+            <GenPPlst>1</GenPPlst>
             <AdsCpuType>"Cortex-M4"</AdsCpuType>
             <RvctDeviceName></RvctDeviceName>
             <mOS>0</mOS>
@@ -329,7 +329,7 @@
             <uC99>1</uC99>
             <uGnu>1</uGnu>
             <useXO>0</useXO>
-            <v6Lang>2</v6Lang>
+            <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
@@ -463,6 +463,11 @@
               <FileName>SCREEN_ROM.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\SCREEN_ROM.s</FilePath>
+            </File>
+            <File>
+              <FileName>START_SCREEN.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\START_SCREEN.s</FilePath>
             </File>
           </Files>
         </Group>

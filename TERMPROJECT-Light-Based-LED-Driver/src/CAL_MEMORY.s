@@ -11,7 +11,6 @@
 
 ;*************************************************************** 
 ; EQU Directives
-IDLE_BASE 			EQU			0x20000500		; memory location to hold idle screen
 ; These directives do not allocate memory
 ;***************************************************************
 ;LABEL		     	DIRECTIVE	VALUE	COMMENT	
@@ -21,18 +20,19 @@ IDLE_BASE 			EQU			0x20000500		; memory location to hold idle screen
 ;LABEL		DIRECTIVE	VALUE			COMMENT
 			AREA        routines, CODE, READONLY
 			THUMB
+			EXTERN		AnnounceResult
 			EXPORT		CAL_MEMORY
 				
 ;***************************************************************		
 CAL_MEMORY	PROC		
-			PUSH		{LR,R5,R6,R8}	
+			PUSH		{LR,R5,R6,R8,R9}	
 			
 			MOV			R8, #84					; multiplicand value
 			MLA			R7, R6, R8, R5			; memory location offset address
-			LDR			R8, =IDLE_BASE
+			MOV			R8, R0
 			ADD			R7, R8					; memory location address	
 			
-			POP			{LR,R5,R6,R8}
+			POP			{LR,R5,R6,R8,R9}
 			BX			LR
 			ENDP
 			END

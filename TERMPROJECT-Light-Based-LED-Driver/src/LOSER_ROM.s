@@ -29,7 +29,7 @@ LOSER_ADD		EQU			0x20002020		; counter address
 LOSER_ROM	PROC
 			PUSH		{LR,R0,R1,R2,R3} ; Save the registers to be used		
 			
-			LDR 		R0, =LOSER_ADD	; Hold initialization location pointer in R0	
+			LDR 		R0, =LOSER_ROM	; Hold initialization location pointer in R0	
 			
 			MOV			R2, #0xC1		; 
 			MOV			R1, #0x00		; 
