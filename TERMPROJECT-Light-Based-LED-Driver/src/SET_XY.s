@@ -36,8 +36,8 @@ SET_XY		PROC
 			BIC 		R0, #0x40				; disable DC to send commands
 			STR			R0, [R1]
 			
-			ORR			R5, #0x80				; x data -> command
-			ORR			R6, #0x40				; y data -> command
+			MOV			R5, #0x80				; x data -> command
+			MOV			R6, #0x40				; y data -> command
 			
 			BL			NOT_READY				; check if SSI is busy	
 			STRB		R5, [R2]				; xCommand 
