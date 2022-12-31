@@ -23,6 +23,7 @@
 // Include application, user and local libraries
 #include "TM4C123GH6PM.h"
 #include <stdio.h>
+#include <math.h>
 
 #define NOKIA5110_FONT_Wide
 
@@ -34,7 +35,10 @@ extern		void SCREEN_ROM(void);
 extern 		void AnnounceResult(void) ;
 
 unsigned char * ahmet = (unsigned char*)0x20002020;
-unsigned char * font_adress = (unsigned char*)0x20002218;
+unsigned char * sayilar_adress = (unsigned char*) 0x20002218; 
+unsigned char * font_adress = (unsigned char*)0x2000229C;
+
+unsigned char sayilar[84] ; 
 
 
 static unsigned char NOKIA_DICK [] = {
@@ -412,6 +416,10 @@ int main (void){
 	N5110_INIT();
 	//
 	//
+	for (  i =0;  i < 84;i++ ){
+	sayilar[84-i] = (sin(i/20.0)+1)*120.0;
+//	*(ahmet+i) = 0xff;
+	}
 
 	for (  i =0;  i < 504;i++ ){
 	*(ahmet+i) = NOKIA_DICK[i];
@@ -437,6 +445,11 @@ int main (void){
 	*(ahmet+i) = FontLarge[25][i]%256;
 	
 	}*/
+	
+	for (i = 0; i< 84; i++){
+		*(sayilar_adress+i) = sayilar[i];
+	}
+		
 	
 	AnnounceResult();
 

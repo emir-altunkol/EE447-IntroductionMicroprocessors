@@ -6,8 +6,8 @@
 bar_generator		PROC
 						PUSH{R0-R12,LR} ;bar x r0,bar 3 blok uzunlukta,r2 data,r3 array location
 						mov r1,#84
-						sub r0,r1,r0;soldan saga endexli 84 den çikar
-						add r0,#252 ;84*3 3. bar bitince basla
+						sub r0,r1,r0    ;soldan saga endexli 84 den çikar
+						add r0,#252     ;84*3 3. bar bitince basla
 						add r0,r3
 						
 						mov r1,0xffffff;bar lenght

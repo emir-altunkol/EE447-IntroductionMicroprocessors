@@ -29,10 +29,6 @@ Project File Date:  12/28/2022
 Build Project 'led-driver' - Target 'Target 1'
 creating preprocessor file for main.c...
 creating preprocessor file for system_TM4C123.c...
-"AnnounceResult.s", line 73: Warning: A1581W: Added 2 bytes of padding at address 0x62
-   73 00000064      END
-0 Errors, 1 Warning
-assembling AnnounceResult.s...
 D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(24): warning: In file included from...
 C:\Users\ozgur\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(298): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
@@ -166,32 +162,47 @@ C:\Users\ozgur\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C12
 C:\Users\ozgur\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h(1251): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
   ^
-D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(36): warning: no previous extern declaration for non-static variable 'ahmet' [-Wmissing-variable-declarations]
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(37): warning: no previous extern declaration for non-static variable 'ahmet' [-Wmissing-variable-declarations]
 unsigned char * ahmet = (unsigned char*)0x20002020;
-                ^
-D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(36): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-unsigned char * ahmet = (unsigned char*)0x20002020;
-^
-D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(37): warning: no previous extern declaration for non-static variable 'font_adress' [-Wmissing-variable-declarations]
-unsigned char * font_adress = (unsigned char*)0x20002218;
                 ^
 D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(37): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-unsigned char * font_adress = (unsigned char*)0x20002218;
+unsigned char * ahmet = (unsigned char*)0x20002020;
 ^
-D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(83): warning: no previous extern declaration for non-static variable 'FontWide' [-Wmissing-variable-declarations]
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(38): warning: no previous extern declaration for non-static variable 'sayilar_adress' [-Wmissing-variable-declarations]
+unsigned char * sayilar_adress = (unsigned char*) 0x20002218; 
+                ^
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(38): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+unsigned char * sayilar_adress = (unsigned char*) 0x20002218; 
+^
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(39): warning: no previous extern declaration for non-static variable 'font_adress' [-Wmissing-variable-declarations]
+unsigned char * font_adress = (unsigned char*)0x2000229C;
+                ^
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(39): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+unsigned char * font_adress = (unsigned char*)0x2000229C;
+^
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(87): warning: no previous extern declaration for non-static variable 'FontWide' [-Wmissing-variable-declarations]
 const unsigned char FontWide[59][8] = {
                     ^
-D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(83): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(87): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 const unsigned char FontWide[59][8] = {
       ^
-D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(446): warning: no newline at end of file [-Wnewline-eof]
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(420): warning: implicit conversion turns floating-point number into integer: 'double' to 'unsigned char' [-Wfloat-conversion]
+        sayilar[84-i] = (sin(i/20.0)+1)*120.0;
+                      ~ ~~~~~~~~~~~~~~~^~~~~~
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(459): warning: no newline at end of file [-Wnewline-eof]
 }
  ^
-48 warnings generated.
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(41): warning: no previous extern declaration for non-static variable 'sayilar' [-Wmissing-variable-declarations]
+unsigned char sayilar[84] ; 
+              ^
+D:\2022-23\Okul\Dersler\EE447\Experimental Work\TERMPROJECT-Light-Based-LED-Driver\src\main.c(41): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+unsigned char sayilar[84] ; 
+^
+51 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=1590 RO-data=1126 RW-data=512 ZI-data=616  
-".\Objects\led-driver.axf" - 0 Error(s), 48 Warning(s).
+Program Size: Code=6604 RO-data=1420 RW-data=516 ZI-data=704  
+".\Objects\led-driver.axf" - 0 Error(s), 51 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -217,8 +228,8 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.1
-      Source file:   Device/Source/ARM/startup_TM4C123.s
       Include file:  Device/Include/TM4C123/TM4C123.h
+      Source file:   Device/Source/ARM/startup_TM4C123.s
       Source file:   Device/Source/system_TM4C123.c
 Build Time Elapsed:  00:00:01
 </pre>

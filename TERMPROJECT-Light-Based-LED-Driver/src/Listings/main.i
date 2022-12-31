@@ -2503,6 +2503,530 @@ extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnu
 extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
 extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
 # 26 "main.c" 2
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 1 3
+# 157 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+extern __attribute__((__pcs__("aapcs"))) unsigned __ARM_dcmp4(double , double );
+extern __attribute__((__pcs__("aapcs"))) unsigned __ARM_fcmp4(float , float );
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_fpclassifyf(float );
+extern __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_fpclassify(double );
+
+
+
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_isfinitef(float __x)
+{
+    return (((*(unsigned *)&(__x)) >> 23) & 0xff) != 0xff;
+}
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_isfinite(double __x)
+{
+    return (((*(1 + (unsigned *)&(__x))) >> 20) & 0x7ff) != 0x7ff;
+}
+
+
+
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_isinff(float __x)
+{
+    return ((*(unsigned *)&(__x)) << 1) == 0xff000000;
+}
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_isinf(double __x)
+{
+    return (((*(1 + (unsigned *)&(__x))) << 1) == 0xffe00000) && ((*(unsigned *)&(__x)) == 0);
+}
+
+
+
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_islessgreaterf(float __x, float __y)
+{
+    unsigned __f = __ARM_fcmp4(__x, __y) >> 28;
+    return (__f == 8) || (__f == 2);
+}
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_islessgreater(double __x, double __y)
+{
+    unsigned __f = __ARM_dcmp4(__x, __y) >> 28;
+    return (__f == 8) || (__f == 2);
+}
+
+
+
+
+
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_isnanf(float __x)
+{
+    return (0x7f800000 - ((*(unsigned *)&(__x)) & 0x7fffffff)) >> 31;
+}
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_isnan(double __x)
+{
+    unsigned __xf = (*(1 + (unsigned *)&(__x))) | (((*(unsigned *)&(__x)) == 0) ? 0 : 1);
+    return (0x7ff00000 - (__xf & 0x7fffffff)) >> 31;
+}
+
+
+
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_isnormalf(float __x)
+{
+    unsigned __xe = ((*(unsigned *)&(__x)) >> 23) & 0xff;
+    return (__xe != 0xff) && (__xe != 0);
+}
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_isnormal(double __x)
+{
+    unsigned __xe = ((*(1 + (unsigned *)&(__x))) >> 20) & 0x7ff;
+    return (__xe != 0x7ff) && (__xe != 0);
+}
+
+
+
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_signbitf(float __x)
+{
+    return (*(unsigned *)&(__x)) >> 31;
+}
+static __inline __attribute__((__nothrow__)) __attribute__((__pcs__("aapcs"))) int __ARM_signbit(double __x)
+{
+    return (*(1 + (unsigned *)&(__x))) >> 31;
+}
+# 266 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+  typedef float float_t;
+  typedef double double_t;
+# 282 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+extern const int math_errhandling;
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) double acos(double );
+
+
+
+extern __attribute__((__nothrow__)) double asin(double );
+
+
+
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double atan(double );
+
+
+
+extern __attribute__((__nothrow__)) double atan2(double , double );
+
+
+
+
+
+extern __attribute__((__nothrow__)) double cos(double );
+
+
+
+
+extern __attribute__((__nothrow__)) double sin(double );
+
+
+
+
+
+extern void __use_accurate_range_reduction(void);
+
+
+
+extern __attribute__((__nothrow__)) double tan(double );
+
+
+
+
+
+extern __attribute__((__nothrow__)) double cosh(double );
+
+
+
+
+extern __attribute__((__nothrow__)) double sinh(double );
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double tanh(double );
+
+
+
+extern __attribute__((__nothrow__)) double exp(double );
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) double frexp(double , int * ) __attribute__((__nonnull__(2)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) double ldexp(double , int );
+
+
+
+
+extern __attribute__((__nothrow__)) double log(double );
+
+
+
+
+
+extern __attribute__((__nothrow__)) double log10(double );
+
+
+
+extern __attribute__((__nothrow__)) double modf(double , double * ) __attribute__((__nonnull__(2)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) double pow(double , double );
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) double sqrt(double );
+# 410 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+    static __inline double _sqrt(double __x) { return sqrt(__x); }
+
+
+
+    __attribute__((__always_inline__)) static float __sqrtf(float f) {
+      __asm__ __volatile__(
+
+
+
+      "vsqrt.f32 %0, %0"
+
+      : "+w"(f));
+      return f;
+    }
+
+    static __inline float _sqrtf(float __x) { return __sqrtf(__x); }
+# 435 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double ceil(double );
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double fabs(double );
+
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double floor(double );
+
+
+
+extern __attribute__((__nothrow__)) double fmod(double , double );
+# 467 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+extern __attribute__((__nothrow__)) double acosh(double );
+
+
+
+extern __attribute__((__nothrow__)) double asinh(double );
+
+
+
+extern __attribute__((__nothrow__)) double atanh(double );
+
+
+
+extern __attribute__((__nothrow__)) double cbrt(double );
+
+
+
+static __inline __attribute__((__nothrow__)) __attribute__((__const__)) double copysign(double __x, double __y)
+
+
+
+{
+    (*(1 + (unsigned *)&(__x))) = ((*(1 + (unsigned *)&(__x))) & 0x7fffffff) | ((*(1 + (unsigned *)&(__y))) & 0x80000000);
+    return __x;
+}
+static __inline __attribute__((__nothrow__)) __attribute__((__const__)) float copysignf(float __x, float __y)
+
+
+
+{
+    (*(unsigned *)&(__x)) = ((*(unsigned *)&(__x)) & 0x7fffffff) | ((*(unsigned *)&(__y)) & 0x80000000);
+    return __x;
+}
+extern __attribute__((__nothrow__)) double erf(double );
+
+
+
+extern __attribute__((__nothrow__)) double erfc(double );
+
+
+
+extern __attribute__((__nothrow__)) double expm1(double );
+# 533 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+extern __attribute__((__nothrow__)) double hypot(double , double );
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int ilogb(double );
+
+
+
+extern __attribute__((__nothrow__)) int ilogbf(float );
+
+
+
+extern __attribute__((__nothrow__)) int ilogbl(long double );
+# 646 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+extern __attribute__((__nothrow__)) double lgamma (double );
+
+
+
+
+extern __attribute__((__nothrow__)) double log1p(double );
+
+
+
+extern __attribute__((__nothrow__)) double logb(double );
+
+
+
+extern __attribute__((__nothrow__)) float logbf(float );
+
+
+
+extern __attribute__((__nothrow__)) long double logbl(long double );
+
+
+
+extern __attribute__((__nothrow__)) double nextafter(double , double );
+
+
+
+
+extern __attribute__((__nothrow__)) float nextafterf(float , float );
+
+
+
+
+extern __attribute__((__nothrow__)) long double nextafterl(long double , long double );
+
+
+
+
+extern __attribute__((__nothrow__)) double nexttoward(double , long double );
+
+
+
+
+extern __attribute__((__nothrow__)) float nexttowardf(float , long double );
+
+
+
+
+extern __attribute__((__nothrow__)) long double nexttowardl(long double , long double );
+
+
+
+
+extern __attribute__((__nothrow__)) double remainder(double , double );
+
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double rint(double );
+
+
+
+extern __attribute__((__nothrow__)) double scalbln(double , long int );
+
+
+
+extern __attribute__((__nothrow__)) float scalblnf(float , long int );
+
+
+
+extern __attribute__((__nothrow__)) long double scalblnl(long double , long int );
+
+
+
+extern __attribute__((__nothrow__)) double scalbn(double , int );
+
+
+
+extern __attribute__((__nothrow__)) float scalbnf(float , int );
+
+
+
+extern __attribute__((__nothrow__)) long double scalbnl(long double , int );
+# 740 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) float fabsf(float);
+static __inline __attribute__((__nothrow__)) __attribute__((__const__)) float _fabsf(float __f) { return fabsf(__f); }
+extern __attribute__((__nothrow__)) float sinf(float );
+extern __attribute__((__nothrow__)) float cosf(float );
+extern __attribute__((__nothrow__)) float tanf(float );
+extern __attribute__((__nothrow__)) float acosf(float );
+extern __attribute__((__nothrow__)) float asinf(float );
+extern __attribute__((__nothrow__)) float atanf(float );
+extern __attribute__((__nothrow__)) float atan2f(float , float );
+extern __attribute__((__nothrow__)) float sinhf(float );
+extern __attribute__((__nothrow__)) float coshf(float );
+extern __attribute__((__nothrow__)) float tanhf(float );
+extern __attribute__((__nothrow__)) float expf(float );
+extern __attribute__((__nothrow__)) float logf(float );
+extern __attribute__((__nothrow__)) float log10f(float );
+extern __attribute__((__nothrow__)) float powf(float , float );
+extern __attribute__((__nothrow__)) float sqrtf(float );
+extern __attribute__((__nothrow__)) float ldexpf(float , int );
+extern __attribute__((__nothrow__)) float frexpf(float , int * ) __attribute__((__nonnull__(2)));
+extern __attribute__((__nothrow__)) __attribute__((__const__)) float ceilf(float );
+extern __attribute__((__nothrow__)) __attribute__((__const__)) float floorf(float );
+extern __attribute__((__nothrow__)) float fmodf(float , float );
+extern __attribute__((__nothrow__)) float modff(float , float * ) __attribute__((__nonnull__(2)));
+# 780 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+__attribute__((__nothrow__)) long double acosl(long double );
+__attribute__((__nothrow__)) long double asinl(long double );
+__attribute__((__nothrow__)) long double atanl(long double );
+__attribute__((__nothrow__)) long double atan2l(long double , long double );
+__attribute__((__nothrow__)) long double ceill(long double );
+__attribute__((__nothrow__)) long double cosl(long double );
+__attribute__((__nothrow__)) long double coshl(long double );
+__attribute__((__nothrow__)) long double expl(long double );
+__attribute__((__nothrow__)) long double fabsl(long double );
+__attribute__((__nothrow__)) long double floorl(long double );
+__attribute__((__nothrow__)) long double fmodl(long double , long double );
+__attribute__((__nothrow__)) long double frexpl(long double , int* ) __attribute__((__nonnull__(2)));
+__attribute__((__nothrow__)) long double ldexpl(long double , int );
+__attribute__((__nothrow__)) long double logl(long double );
+__attribute__((__nothrow__)) long double log10l(long double );
+__attribute__((__nothrow__)) long double modfl(long double , long double * ) __attribute__((__nonnull__(2)));
+__attribute__((__nothrow__)) long double powl(long double , long double );
+__attribute__((__nothrow__)) long double sinl(long double );
+__attribute__((__nothrow__)) long double sinhl(long double );
+__attribute__((__nothrow__)) long double sqrtl(long double );
+__attribute__((__nothrow__)) long double tanl(long double );
+__attribute__((__nothrow__)) long double tanhl(long double );
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) float acoshf(float );
+__attribute__((__nothrow__)) long double acoshl(long double );
+extern __attribute__((__nothrow__)) float asinhf(float );
+__attribute__((__nothrow__)) long double asinhl(long double );
+extern __attribute__((__nothrow__)) float atanhf(float );
+__attribute__((__nothrow__)) long double atanhl(long double );
+__attribute__((__nothrow__)) long double copysignl(long double , long double );
+extern __attribute__((__nothrow__)) float cbrtf(float );
+__attribute__((__nothrow__)) long double cbrtl(long double );
+extern __attribute__((__nothrow__)) float erff(float );
+__attribute__((__nothrow__)) long double erfl(long double );
+extern __attribute__((__nothrow__)) float erfcf(float );
+__attribute__((__nothrow__)) long double erfcl(long double );
+extern __attribute__((__nothrow__)) float expm1f(float );
+__attribute__((__nothrow__)) long double expm1l(long double );
+extern __attribute__((__nothrow__)) float log1pf(float );
+__attribute__((__nothrow__)) long double log1pl(long double );
+extern __attribute__((__nothrow__)) float hypotf(float , float );
+__attribute__((__nothrow__)) long double hypotl(long double , long double );
+extern __attribute__((__nothrow__)) float lgammaf(float );
+__attribute__((__nothrow__)) long double lgammal(long double );
+extern __attribute__((__nothrow__)) float remainderf(float , float );
+__attribute__((__nothrow__)) long double remainderl(long double , long double );
+extern __attribute__((__nothrow__)) float rintf(float );
+__attribute__((__nothrow__)) long double rintl(long double );
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) double exp2(double );
+extern __attribute__((__nothrow__)) float exp2f(float );
+__attribute__((__nothrow__)) long double exp2l(long double );
+extern __attribute__((__nothrow__)) double fdim(double , double );
+extern __attribute__((__nothrow__)) float fdimf(float , float );
+__attribute__((__nothrow__)) long double fdiml(long double , long double );
+# 855 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+extern __attribute__((__nothrow__)) double fma(double , double , double );
+extern __attribute__((__nothrow__)) float fmaf(float , float , float );
+
+static __inline __attribute__((__nothrow__)) long double fmal(long double __x, long double __y, long double __z) { return (long double)fma((double)__x, (double)__y, (double)__z); }
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double fmax(double , double );
+extern __attribute__((__nothrow__)) __attribute__((__const__)) float fmaxf(float , float );
+__attribute__((__nothrow__)) long double fmaxl(long double , long double );
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double fmin(double , double );
+extern __attribute__((__nothrow__)) __attribute__((__const__)) float fminf(float , float );
+__attribute__((__nothrow__)) long double fminl(long double , long double );
+extern __attribute__((__nothrow__)) double log2(double );
+extern __attribute__((__nothrow__)) float log2f(float );
+__attribute__((__nothrow__)) long double log2l(long double );
+extern __attribute__((__nothrow__)) long lrint(double );
+extern __attribute__((__nothrow__)) long lrintf(float );
+
+static __inline __attribute__((__nothrow__)) long lrintl(long double __x) { return lrint((double)__x); }
+
+
+extern __attribute__((__nothrow__)) long long llrint(double );
+extern __attribute__((__nothrow__)) long long llrintf(float );
+
+static __inline __attribute__((__nothrow__)) long long llrintl(long double __x) { return llrint((double)__x); }
+
+
+extern __attribute__((__nothrow__)) long lround(double );
+extern __attribute__((__nothrow__)) long lroundf(float );
+
+static __inline __attribute__((__nothrow__)) long lroundl(long double __x) { return lround((double)__x); }
+
+
+extern __attribute__((__nothrow__)) long long llround(double );
+extern __attribute__((__nothrow__)) long long llroundf(float );
+
+static __inline __attribute__((__nothrow__)) long long llroundl(long double __x) { return llround((double)__x); }
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double nan(const char * );
+extern __attribute__((__nothrow__)) __attribute__((__const__)) float nanf(const char * );
+
+static __inline __attribute__((__nothrow__)) __attribute__((__const__)) long double nanl(const char *__t) { return (long double)nan(__t); }
+# 908 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\math.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double nearbyint(double );
+extern __attribute__((__nothrow__)) __attribute__((__const__)) float nearbyintf(float );
+__attribute__((__nothrow__)) long double nearbyintl(long double );
+extern __attribute__((__nothrow__)) double remquo(double , double , int * );
+extern __attribute__((__nothrow__)) float remquof(float , float , int * );
+
+static __inline long double remquol(long double __x, long double __y, int *__q) { return (long double)remquo((double)__x, (double)__y, __q); }
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double round(double );
+extern __attribute__((__nothrow__)) __attribute__((__const__)) float roundf(float );
+__attribute__((__nothrow__)) long double roundl(long double );
+extern __attribute__((__nothrow__)) double tgamma(double );
+extern __attribute__((__nothrow__)) float tgammaf(float );
+__attribute__((__nothrow__)) long double tgammal(long double );
+extern __attribute__((__nothrow__)) __attribute__((__const__)) double trunc(double );
+extern __attribute__((__nothrow__)) __attribute__((__const__)) float truncf(float );
+__attribute__((__nothrow__)) long double truncl(long double );
+# 27 "main.c" 2
 
 
 
@@ -2514,7 +3038,10 @@ extern void SCREEN_ROM(void);
 extern void AnnounceResult(void) ;
 
 unsigned char * ahmet = (unsigned char*)0x20002020;
-unsigned char * font_adress = (unsigned char*)0x20002218;
+unsigned char * sayilar_adress = (unsigned char*) 0x20002218;
+unsigned char * font_adress = (unsigned char*)0x2000229C;
+
+unsigned char sayilar[84] ;
 
 
 static unsigned char NOKIA_DICK [] = {
@@ -2551,7 +3078,7 @@ static unsigned char NOKIA_DICK [] = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
-# 83 "main.c"
+# 87 "main.c"
 const unsigned char FontWide[59][8] = {
     {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
     {0x00, 0x00, 0x00, 0x5f, 0x00, 0x00, 0x00, 0x00},
@@ -2613,7 +3140,7 @@ const unsigned char FontWide[59][8] = {
     {0x00, 0x07, 0x08, 0x08, 0x78, 0x08, 0x08, 0x07},
     {0x00, 0x71, 0x49, 0x49, 0x49, 0x49, 0x49, 0x47},
 };
-# 407 "main.c"
+# 411 "main.c"
 static unsigned int i = 0;
 static unsigned int j = 0;
 
@@ -2622,6 +3149,10 @@ int main (void){
  N5110_INIT();
 
 
+ for ( i =0; i < 84;i++ ){
+ sayilar[84-i] = (sin(i/20.0)+1)*120.0;
+
+ }
 
  for ( i =0; i < 504;i++ ){
  *(ahmet+i) = NOKIA_DICK[i];
@@ -2633,7 +3164,12 @@ int main (void){
   *(font_adress+i*8+j) = FontWide[i][j];
   }
  }
-# 441 "main.c"
+# 449 "main.c"
+ for (i = 0; i< 84; i++){
+  *(sayilar_adress+i) = sayilar[i];
+ }
+
+
  AnnounceResult();
 
 
