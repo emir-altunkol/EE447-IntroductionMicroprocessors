@@ -1784,7 +1784,7 @@
       <ActiveTab>0</ActiveTab>
       <Doc>
         <Name>&lt;1&gt;.\main.c</Name>
-        <ColumnNumber>13</ColumnNumber>
+        <ColumnNumber>33</ColumnNumber>
         <TopLine>411</TopLine>
         <CurrentLine>420</CurrentLine>
         <Folding>1</Folding>
@@ -1802,9 +1802,9 @@
       </Doc>
       <Doc>
         <Name>&lt;1&gt;.\AnnounceResult.s</Name>
-        <ColumnNumber>42</ColumnNumber>
+        <ColumnNumber>48</ColumnNumber>
         <TopLine>31</TopLine>
-        <CurrentLine>47</CurrentLine>
+        <CurrentLine>57</CurrentLine>
         <Folding>0</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -1838,9 +1838,9 @@
       </Doc>
       <Doc>
         <Name>&lt;1&gt;.\bar_generator.s</Name>
-        <ColumnNumber>32</ColumnNumber>
-        <TopLine>1</TopLine>
-        <CurrentLine>1</CurrentLine>
+        <ColumnNumber>4</ColumnNumber>
+        <TopLine>23</TopLine>
+        <CurrentLine>49</CurrentLine>
         <Folding>0</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

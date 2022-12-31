@@ -53,6 +53,8 @@ generate_bar
 					ldrb r2,[r5],#1
 					ldr r3,=LOSER_ADD
 					
+					mov r7, #1
+					sub r6,r7,r6  ; toggle to in
 					BL bar_generator	;bar x r0,bar 3 blok uzunlukta,r2 data,r3 array location
 					add r4,#1
 					b generate_bar

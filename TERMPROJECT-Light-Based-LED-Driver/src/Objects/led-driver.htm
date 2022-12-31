@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\led-driver.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\led-driver.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sat Dec 31 17:47:16 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sat Dec 31 19:54:43 2022
 <BR><P>
 <H3>Maximum Stack Usage =        208 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1294,7 +1294,7 @@ Global Symbols
 <P><STRONG><a name="[76]"></a>SystemInit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, system_tm4c123.o(.text.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(.text)
 </UL>
-<P><STRONG><a name="[84]"></a>main</STRONG> (Thumb, 520 bytes, Stack size 24 bytes, main.o(.text.main))
+<P><STRONG><a name="[84]"></a>main</STRONG> (Thumb, 512 bytes, Stack size 24 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = main &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
@@ -1310,7 +1310,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[78]"></a>AnnounceResult</STRONG> (Thumb, 126 bytes, Stack size 0 bytes, announceresult.o(announceresult))
+<P><STRONG><a name="[78]"></a>AnnounceResult</STRONG> (Thumb, 134 bytes, Stack size 0 bytes, announceresult.o(announceresult))
 <BR><BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;char_write_to_array
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bar_generator
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCREEN_MAP
@@ -1318,7 +1318,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[98]"></a>bar_generator</STRONG> (Thumb, 78 bytes, Stack size 0 bytes, bar_generator.o(bar_generator1))
+<P><STRONG><a name="[98]"></a>bar_generator</STRONG> (Thumb, 136 bytes, Stack size 0 bytes, bar_generator.o(bar_generator1))
 <BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AnnounceResult
 </UL>
 
