@@ -1,5 +1,11 @@
-
-
+; *************************************************************** 
+; main.c
+; This program is aimed to control the brightness of a LED using
+; feedback from  a light sensor and the output is displayed on 
+; Nokia 5110 LCD display.
+; @author: ozgurgulsuna
+; Created on 27/12/2022
+;*************************************************************** 
 ;*************************************************************** 
 ; EQU Directives
 ; These directives do not allocate memory
