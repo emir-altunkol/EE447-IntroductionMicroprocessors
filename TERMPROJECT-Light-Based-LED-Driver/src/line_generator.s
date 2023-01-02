@@ -60,6 +60,11 @@ vert
 						and r2, r5						
 horz
 
+						mov r10, r9
+						lsr r10, #1
+						add r9, r10
+						lsr r10, #1
+						add r9, r10
 						orr r2, r9
 						
 						strb r2,[r0],#84

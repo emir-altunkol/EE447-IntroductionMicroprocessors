@@ -112,7 +112,6 @@ generate_bar
 					b generate_bar
 end_bar				
 					
-					
 					LDR				R0, =LOSER_ADD		; starting address
 					MOV				R3, #504
 					MOV				R5, #0x00

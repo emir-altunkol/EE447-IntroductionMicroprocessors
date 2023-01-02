@@ -411,6 +411,7 @@ const unsigned char FontHomeSpun[95][7] = {
 
 static unsigned int i = 0;
 static unsigned int j = 0;
+static unsigned int k = 0;
 
 int main (void){
 	PORTA_SSI0_INIT();
@@ -418,7 +419,7 @@ int main (void){
 	//
 	//
 	for (  i =1;  i < 84;i++ ){
-	sayilar[i] = (cos(i/4.0)+1.5)*80.0;
+	sayilar[i] = (sin(i/4.0)+1.5)*80.0;
 //	*(ahmet+i) = 0xff;
 	}
 
@@ -456,5 +457,23 @@ int main (void){
 
 	
 	while(1){
+		for (  i =0;  i < 600;i++ ){
+		for ( j =0;  j < 100;j++ ){
+		__ASM("NOP");
+		}
+	}
+		for (  i =1;  i < 84;i++ ){
+		sayilar[(i+k)%84] = (sin(i/4.45/3*4)+2)*80.0;
+		}
+		for (i = 0; i< 84; i++){
+		*(sayilar_adress+i) = sayilar[i];
+		}
+		k++;
+//		if(k%2)
+//		__ASM("mov r6,#0");
+//		else
+//		__ASM("mov r6,#1");
+
+		AnnounceResult();
 	}
 }
