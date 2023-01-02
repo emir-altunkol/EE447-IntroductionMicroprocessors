@@ -26,23 +26,73 @@ AnnounceResult		PROC
 					LDR R0,=LOSER_ADD
 
 					LDR R1,=font_adress
-					MOV R2,#47
+					MOV R2,#44
 					MOV R4,#0
-					MOV R5,#8
+					MOV R5,#7
 					BL char_write_to_array    			;R0 array adress,R1 font adress,R2 font index,R4 array start index, R5 font size 8 for fontWide
-					MOV R2,#58
+					MOV R2,#53
+					ADD R4,#8
+					BL char_write_to_array
+					MOV R2,#45
+					ADD R4,#8
+					BL char_write_to_array
+					MOV R2,#41
+					ADD R4,#8
+					BL char_write_to_array
+					MOV R2,#46
+					ADD R4,#8
+					BL char_write_to_array
+					MOV R2,#26
+					ADD R4,#8
+					BL char_write_to_array
+					MOV R2,#0
+					ADD R4,#8
+					BL char_write_to_array		
+
+
+					BL char_write_to_array    			;R0 array adress,R1 font adress,R2 font index,R4 array start index, R5 font size 8 for fontWide
+					MOV R2,#40
+					ADD R4,#36
+					BL char_write_to_array
+					MOV R2,#41
 					ADD R4,#8
 					BL char_write_to_array
 					MOV R2,#39
 					ADD R4,#8
 					BL char_write_to_array
-					MOV R2,#53
+					MOV R2,#40
 					ADD R4,#8
 					BL char_write_to_array
-					MOV R2,#50
+					MOV R2,#26
 					ADD R4,#8
 					BL char_write_to_array
+					MOV R2,#0
+					ADD R4,#8
+					BL char_write_to_array
+					MOV R2,#59
+					ADD R4,#36
+					BL char_write_to_array					
 					
+					
+					BL char_write_to_array    			;R0 array adress,R1 font adress,R2 font index,R4 array start index, R5 font size 8 for fontWide
+					MOV R2,#44
+					ADD R4,#8
+					BL char_write_to_array
+					MOV R2,#47
+					ADD R4,#8
+					BL char_write_to_array
+					MOV R2,#55
+					ADD R4,#8
+					BL char_write_to_array
+					MOV R2,#26
+					ADD R4,#8
+					BL char_write_to_array
+					MOV R2,#0
+					ADD R4,#16
+					BL char_write_to_array
+					MOV R2,#0
+					ADD R4,#36
+					BL char_write_to_array					
 					
 					mov r4,#0
 					ldr r5,=sayilar_adress

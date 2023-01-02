@@ -25,7 +25,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define NOKIA5110_FONT_Wide
+#define NOKIA5110_FONT_Thick
 
 extern 		void PORTA_SSI0_INIT(void)			;
 extern 		void N5110_INIT(void)				;
@@ -157,7 +157,7 @@ const unsigned char FontWide[59][8] = {
 // Also the code adds two blank lines on LHS and RHS side 
 // Each character is in a 9 by 8 bit pixel box.
 
-const unsigned char FontThick[59][7] = {
+const unsigned char FontThick[60][7] = {
     {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, //  
     {0x5f, 0x5f, 0x00, 0x00, 0x00, 0x00, 0x00}, // !
     {0x07, 0x07, 0x00, 0x07, 0x07, 0x00, 0x00}, // "
@@ -217,6 +217,7 @@ const unsigned char FontThick[59][7] = {
     {0x77, 0x7f, 0x1c, 0x08, 0x1c, 0x7f, 0x77}, // X
     {0x07, 0x0f, 0x7c, 0x78, 0x7c, 0x0f, 0x07}, // Y
     {0x73, 0x7b, 0x6b, 0x6b, 0x6b, 0x6f, 0x67}, // Z
+    {0x00, 0x08, 0x1C, 0x3E, 0x77, 0x63, 0x41}, // < (bold)
 };
 
 #endif
@@ -416,19 +417,19 @@ int main (void){
 	N5110_INIT();
 	//
 	//
-	for (  i =0;  i < 84;i++ ){
-	sayilar[i] = (sin(i/10.0)+1.5)*60.0;
+	for (  i =1;  i < 84;i++ ){
+	sayilar[i] = (cos(i/4.0)+1.5)*80.0;
 //	*(ahmet+i) = 0xff;
 	}
 
-	for (  i =0;  i < 504;i++ ){
-	*(ahmet+i) = NOKIA_DICK[i];
-//	*(ahmet+i) = 0xff;
+	for (  i =1;  i < 504;i++ ){
+	//*(ahmet+i) = NOKIA_DICK[i];
+  	*(ahmet+i) = 0x00;
 	}
 	
-	for (  i =0;  i < 59;i++ ){
-		for ( j =0;  j < 8;j++ ){
-		*(font_adress+i*8+j) = FontWide[i][j];
+	for (  i =0;  i < 60;i++ ){
+		for ( j =0;  j < 7;j++ ){
+		*(font_adress+i*7+j) = FontThick[i][j];
 		}
 	}
 	
