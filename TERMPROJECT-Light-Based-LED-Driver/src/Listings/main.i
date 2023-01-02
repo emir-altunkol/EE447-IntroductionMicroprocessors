@@ -3150,7 +3150,7 @@ int main (void){
 
 
  for ( i =0; i < 84;i++ ){
- sayilar[i] = (sin(i/8.0)+1.5)*60.0;
+ sayilar[i] = (sin(i/10.0)+1.5)*60.0;
 
  }
 

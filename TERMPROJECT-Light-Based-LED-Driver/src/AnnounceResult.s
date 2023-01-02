@@ -16,6 +16,7 @@ sayilar_adress		EQU				0x20002218		; sayilar
 					EXTERN			RESTORE_SCREEN
 					EXPORT			AnnounceResult
 					EXTERN 			bar_generator
+					EXTERN          line_generator
 					ALIGN
 					ENTRY
 
@@ -55,10 +56,13 @@ generate_bar
 					
 					mov r7, #1
 					sub r6,r7,r6  ; toggle to in
-					BL bar_generator	;bar x r0,bar 3 blok uzunlukta,r2 data,r3 array location
+					;BL bar_generator	;bar x r0,bar 3 blok uzunlukta,r2 data,r3 array location
+					BL line_generator
 					add r4,#1
 					b generate_bar
-end_bar
+end_bar				
+					
+					
 					LDR				R0, =LOSER_ADD		; starting address
 					MOV				R3, #504
 					MOV				R5, #0x00

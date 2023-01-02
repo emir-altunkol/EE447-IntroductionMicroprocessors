@@ -484,6 +484,11 @@
               <FileType>2</FileType>
               <FilePath>.\bar_generator.s</FilePath>
             </File>
+            <File>
+              <FileName>line_generator.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\line_generator.s</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
