@@ -7,16 +7,13 @@ sayilar_adress		EQU				0x20002218		; sayilar
 					AREA   data, DATA, READONLY
 					THUMB
 					PRESERVE8
-;sayilar 			DCB				0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd,0x55,0x88,0x33,0xff,0xff,0xdd
 
 					AREA			announceresult,CODE,READONLY
 					THUMB
 					EXTERN			SCREEN_MAP
 					EXTERN			char_write_to_array
-					EXTERN			RESTORE_SCREEN
-					EXPORT			AnnounceResult
-					EXTERN 			bar_generator
 					EXTERN          line_generator
+					EXPORT			AnnounceResult
 					ALIGN
 					ENTRY
 
