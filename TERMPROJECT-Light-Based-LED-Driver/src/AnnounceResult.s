@@ -1,7 +1,6 @@
 ;LABEL				DIRECTIVE		VALUE				COMMENT
 
 LOSER_ADD			EQU				0x20002020		; counter address
-IDLE_BASE 			EQU			    0x20000500		; memory location to hold idle screen	
 font_adress 		EQU			    0x2000229C		; font location
 sayilar_adress		EQU				0x20002218		; sayilar
 					AREA   data, DATA, READONLY
@@ -103,16 +102,13 @@ generate_bar
 					
 					mov r7, #1
 					sub r6,r7,r6  ; toggle to in
-					;BL bar_generator	;bar x r0,bar 3 blok uzunlukta,r2 data,r3 array location
 					BL line_generator
 					add r4,#1
 					b generate_bar
 end_bar				
 					
 					LDR				R0, =LOSER_ADD		; starting address
-					MOV				R3, #504
-					MOV				R5, #0x00
-					MOV				R6, #0x00
+					;MOV				R3, #504
 					
 					
 					BL				SCREEN_MAP

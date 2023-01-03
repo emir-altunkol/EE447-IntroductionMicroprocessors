@@ -342,8 +342,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\NOKIA5110_FONTS.h</PathWithFileName>
-      <FilenameWithoutPath>NOKIA5110_FONTS.h</FilenameWithoutPath>
+      <PathWithFileName>.\Nokia5110_fonts.h</PathWithFileName>
+      <FilenameWithoutPath>Nokia5110_fonts.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

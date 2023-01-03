@@ -440,9 +440,9 @@
               <FilePath>.\line_generator.s</FilePath>
             </File>
             <File>
-              <FileName>NOKIA5110_FONTS.h</FileName>
+              <FileName>Nokia5110_fonts.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\NOKIA5110_FONTS.h</FilePath>
+              <FilePath>.\Nokia5110_fonts.h</FilePath>
             </File>
           </Files>
         </Group>

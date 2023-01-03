@@ -33,11 +33,6 @@ SCREEN_MAP	PROC
 			PUSH		{LR,R0,R1,R2,R3,R5,R6,R7,R8}
 			
 			LDR			R8, =SSI0_DR
-			
-
-			
-			BL			DELAY50
-			; R5 has the xBox, R6 has yBox
 			BL			SET_XY
 			BL			FIFO_FULL				; check if SSI is full
 			
@@ -45,7 +40,7 @@ SCREEN_MAP	PROC
 			LDR			R0, =LOSER_ADD
 a			
 			CMP			R2, #504
-			BEQ			sonn
+			BEQ			FIN
 			LDRB		R1,	[R0]
 			ADD			R0,	#1
 
@@ -53,9 +48,6 @@ a
 			STRB		R1, [R8]				; load it to the transmit fifo
 			ADD			R2, #1
 			b a
-sonn
-
-
 			
 FIN			POP			{LR,R0,R1,R2,R3,R5,R6,R7,R8}
 			BX			LR

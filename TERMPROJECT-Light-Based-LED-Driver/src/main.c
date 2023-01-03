@@ -24,7 +24,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "TM4C123GH6PM.h"
-#include "NOKIA5110_FONTS.h"
+#include "Nokia5110_fonts.h"
 
 
 // Function prototypes
@@ -85,7 +85,7 @@ int main (void){
 
 	while(1){
 		for (  i =0;  i < 600;i++ ){
-		for ( j =0;  j < 80;j++ ){
+		for ( j =0;  j < 50;j++ ){
 		__ASM("NOP");
 		}
 	}
