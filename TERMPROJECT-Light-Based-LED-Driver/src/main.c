@@ -29,6 +29,7 @@
 
 // Function prototypes
 extern 		void PORTA_SSI0_INIT(void);
+extern		void SCREEN_MAP(void);
 extern 		void N5110_INIT(void);
 extern 		void AnnounceResult(void);
 
@@ -60,8 +61,9 @@ int main (void){
 
 	for (  i =1;  i < 504;i++ ){
 	//*(background+i) = NOKIA_DICK[i];
+	*(background+i) = nokia[i];
 	//*(background+i) = 0xff;
-  *(background+i) = 0x00;
+  //*(background+i) = 0x00;
 	}
 	
 	for (  i =0;  i < 60;i++ ){
@@ -82,6 +84,20 @@ int main (void){
 
 	
 //AnnounceResult();
+//_ASM("MOV ");
+SCREEN_MAP();	
+			for (  i =0;  i < 600;i++ ){
+		for ( j =0;  j < 2000;j++ ){
+		__ASM("NOP");
+		}
+	}
+			
+		for (  i =1;  i < 504;i++ ){
+	//*(background+i) = NOKIA_DICK[i];
+	//*(background+i) = nokia[i];
+	//*(background+i) = 0xff;
+  *(background+i) = 0x00;
+	}
 
 	while(1){
 		for (  i =0;  i < 600;i++ ){
