@@ -19,12 +19,24 @@
 // PA_3    -  CE              SSI0Fss / Chip Select
 // PA_6    -  DC              GPIO    / Select Data or Command
 // ==============================================================
+//
+//
+// Wiring
+// TM4C123 -  TSL2561        Comment
+// ==============================================================
+// PC4     -  INT              GPIO    / Interrupt
+// 3.3V    -  3.3V             
+// GND     -  GND
+// PB2		 -	SCL							
+// PB3		 -	SDA					
+// ==============================================================
 
 // Include application, user and local libraries
 #include <stdio.h>
 #include <math.h>
 #include "TM4C123GH6PM.h"
 #include "Nokia5110_fonts.h"
+#include "i2c.h"
 
 
 // Function prototypes
@@ -87,7 +99,7 @@ int main (void){
 //_ASM("MOV ");
 SCREEN_MAP();	
 			for (  i =0;  i < 600;i++ ){
-		for ( j =0;  j < 2000;j++ ){
+		for ( j =0;  j < 3000;j++ ){
 		__ASM("NOP");
 		}
 	}
@@ -98,6 +110,27 @@ SCREEN_MAP();
 	//*(background+i) = 0xff;
   *(background+i) = 0x00;
 	}
+		
+//----I2C INIT----//
+
+I2C0_Init();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//
 
 	while(1){
 		for (  i =0;  i < 600;i++ ){
