@@ -3196,9 +3196,13 @@ static unsigned int k = 0;
 
 static unsigned int Address = 0x39 ;
 unsigned int Command = 0x8C ;
-unsigned int DataLow = 0;
-unsigned int DataHigh = 0;
-unsigned int Channel0 = 0;
+ char data1 = 0x0003;
+ char data2 = 0xFF;
+ char data3 = 0xFF;
+ char data4 = 0xFF;
+
+ unsigned int ch0 = 0;
+ unsigned int ch1 = 0;
 
 
 
@@ -3227,7 +3231,7 @@ int main (void){
   *(font_adress+i*7+j) = FontThick[i][j];
   }
  }
-# 109 "main.c"
+# 113 "main.c"
 SCREEN_MAP();
 
    for ( i =0; i < 600;i++ ){
@@ -3245,17 +3249,24 @@ SCREEN_MAP();
 
 
 
-char data[2] = {0x01,0x02};
+char data[2];
 I2C3_Init();
 
 DELAY50();
 DELAY50();
 DELAY50();
-# 147 "main.c"
+
+
+I2C3_Write_Multiple(0x39,0x80,1,0x03);
+DELAY50();
+
+I2C3_Write_Multiple(0x39,0x81,1,0x00);
+DELAY50();
+# 152 "main.c"
  while(1){
 
   for ( i =0; i < 600;i++ ){
-  for ( j =0; j < 50;j++ ){
+  for ( j =0; j < 200;j++ ){
   __asm("NOP");
   }
  }
@@ -3268,7 +3279,17 @@ DELAY50();
   k++;
   AnnounceResult();
 
-  I2C3_read_Multiple(0x39,0x8A,1,DataLow);
+  I2C3_read_Multiple(0x39,0x8C,1,data1);
+  I2C3_read_Multiple(0x39,0x8D,1,data2);
+
+  ch0 = data2*256 + data1;
+
+
+  I2C3_read_Multiple(0x39,0x8E,1,data3);
+  I2C3_read_Multiple(0x39,0x8F,1,data4);
+
+  ch1 = data4*256 + data3;
+
 
 
 

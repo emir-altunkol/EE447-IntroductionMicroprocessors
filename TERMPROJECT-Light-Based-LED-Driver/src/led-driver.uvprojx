@@ -454,6 +454,11 @@
               <FileType>5</FileType>
               <FilePath>.\i2c.h</FilePath>
             </File>
+            <File>
+              <FileName>lux.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lux.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

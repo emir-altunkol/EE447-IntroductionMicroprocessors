@@ -33,7 +33,7 @@
 // will be configured according to the macros in the rest of this file.
 // If it is defined to be 0, then the system clock configuration is bypassed.
 //
-#define CLOCK_SETUP 1
+#define CLOCK_SETUP 0
 
 //********************************* RCC ***************************************
 //
