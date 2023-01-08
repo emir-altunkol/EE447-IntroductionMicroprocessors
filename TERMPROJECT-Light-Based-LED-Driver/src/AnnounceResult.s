@@ -62,17 +62,17 @@ AnnounceResult		PROC
 					MOV R2,#26
 					ADD R4,#8
 					BL char_write_to_array
-					MOV R2,#0
-					ADD R4,#8
-					BL char_write_to_array
-					MOV R2,#59
-					ADD R4,#36
-					BL char_write_to_array					
+;					MOV R2,#0
+;					ADD R4,#8
+;					BL char_write_to_array
+;					MOV R2,#59
+;					ADD R4,#36
+;					BL char_write_to_array					
 					
 					
 					BL char_write_to_array    			;R0 array adress,R1 font adress,R2 font index,R4 array start index, R5 font size 8 for fontWide
 					MOV R2,#44
-					ADD R4,#8
+					ADD R4,#52
 					BL char_write_to_array
 					MOV R2,#47
 					ADD R4,#8
@@ -83,12 +83,12 @@ AnnounceResult		PROC
 					MOV R2,#26
 					ADD R4,#8
 					BL char_write_to_array
-					MOV R2,#0
-					ADD R4,#16
-					BL char_write_to_array
-					MOV R2,#0
-					ADD R4,#36
-					BL char_write_to_array					
+;					MOV R2,#0
+;					ADD R4,#16
+;					BL char_write_to_array
+;					MOV R2,#0
+;					ADD R4,#36
+;					BL char_write_to_array					
 					
 					mov r4,#0
 					ldr r5,=sayilar_adress

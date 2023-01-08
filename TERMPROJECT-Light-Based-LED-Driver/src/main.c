@@ -73,6 +73,8 @@ unsigned int Command = 0x8C ;//Set Command bit Read Byte Protocol
  
  int luxo = 0;
  int pot = 0xfB;
+ int toggle = 1;
+ int state = 1;
 
 void adc_init(void)
 {
@@ -250,6 +252,51 @@ adc_init();
 		I2C3_Write_Multiple(0x39,0xC0,1,0x00);
 		
 		pot=data_read();
+		
+		if (GPIOE->DATA & 0x00000004){
+			int addrr=159;
+			if(state == 1){
+			toggle = !toggle;
+			*(background+addrr+1) = FontThick[59][0];
+			*(background+addrr+2) = FontThick[59][1];
+			*(background+addrr+3) = FontThick[59][2];
+			*(background+addrr+4) = FontThick[59][3];
+			*(background+addrr+5) = FontThick[59][4];
+			*(background+addrr+6) = FontThick[59][5];
+			*(background+addrr+7) = FontThick[59][6];
+				
+			*(background+addrr+1+84) = 0;
+			*(background+addrr+2+84) = 0;
+			*(background+addrr+3+84) = 0;
+			*(background+addrr+4+84) = 0;
+			*(background+addrr+5+84) = 0;
+			*(background+addrr+6+84) = 0;
+			*(background+addrr+7+84) = 0;
+			state = 0;
+			}
+			else{
+			state = 1;
+			*(background+addrr+1) = 0;
+			*(background+addrr+2) = 0;
+			*(background+addrr+3) = 0;
+			*(background+addrr+4) = 0;
+			*(background+addrr+5) = 0;
+			*(background+addrr+6) = 0;
+			*(background+addrr+7) = 0;
+				
+			*(background+addrr+1+84) = FontThick[59][0];
+			*(background+addrr+2+84) = FontThick[59][1];
+			*(background+addrr+3+84) = FontThick[59][2];
+			*(background+addrr+4+84) = FontThick[59][3];
+			*(background+addrr+5+84) = FontThick[59][4];
+			*(background+addrr+6+84) = FontThick[59][5];
+			*(background+addrr+7+84) = FontThick[59][6];				
+			}
+	}
+			
+		
+		
+		
 
 
 		
