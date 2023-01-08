@@ -126,10 +126,9 @@ SCREEN_MAP();
 char data[2] = {0x01,0x02};
 I2C3_Init();
 
-
-
-	
-	
+DELAY50();
+DELAY50();
+DELAY50();
 	
 	
 	
@@ -160,6 +159,9 @@ I2C3_Init();
 		}
 		k++;
 		AnnounceResult();
+		//I2C3_Write_Multiple(0x39,0x80,1,0x03);
+		I2C3_read_Multiple(0x39,0x8A,1,DataLow);
+
 		//I2C0_read_Multiple(Address,0x8C,1,DataLow);
 		
 	}

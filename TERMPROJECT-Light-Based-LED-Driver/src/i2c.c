@@ -77,45 +77,45 @@ char I2C3_read_Multiple(int slave_address, char slave_memory_address, int bytes_
         return -1;         /* no read was performed */
 
     /* send slave address and starting address */
-    I2C1->MSA = slave_address << 1;
-    I2C1->MDR = slave_memory_address;
-    I2C1->MCS = 3;       /* S-(saddr+w)-ACK-maddr-ACK */
+    I2C3->MSA = slave_address << 1;
+    I2C3->MDR = slave_memory_address;
+    I2C3->MCS = 3;       /* S-(saddr+w)-ACK-maddr-ACK */
     error = I2C_wait_till_done();
     if (error)
         return error;
 
     /* to change bus from write to read, send restart with slave addr */
-    I2C1->MSA = (slave_address << 1) + 1;   /* restart: -R-(saddr+r)-ACK */
+    I2C3->MSA = (slave_address << 1) + 1;   /* restart: -R-(saddr+r)-ACK */
 
     if (bytes_count == 1)             /* if last byte, don't ack */
-        I2C1->MCS = 7;              /* -data-NACK-P */
+        I2C3->MCS = 7;              /* -data-NACK-P */
     else                            /* else ack */
-        I2C1->MCS = 0xB;            /* -data-ACK- */
+        I2C3->MCS = 0xB;            /* -data-ACK- */
     error = I2C_wait_till_done();
     if (error) return error;
 
-    *data++ = I2C1->MDR;            /* store the data received */
+    *data++ = I2C3->MDR;            /* store the data received */
 
     if (--bytes_count == 0)           /* if single byte read, done */
     {
-        while(I2C1->MCS & 0x40);    /* wait until bus is not busy */
+        while(I2C3->MCS & 0x40);    /* wait until bus is not busy */
         return 0;       /* no error */
     }
  
     /* read the rest of the bytes */
     while (bytes_count > 1)
     {
-        I2C1->MCS = 9;              /* -data-ACK- */
+        I2C3->MCS = 9;              /* -data-ACK- */
         error = I2C_wait_till_done();
         if (error) return error;
         bytes_count--;
-        *data++ = I2C1->MDR;        /* store data received */
+        *data++ = I2C3->MDR;        /* store data received */
     }
 
-    I2C1->MCS = 5;                  /* -data-NACK-P */
+    I2C3->MCS = 5;                  /* -data-NACK-P */
     error = I2C_wait_till_done();
-    *data = I2C1->MDR;              /* store data received */
-    while(I2C1->MCS & 0x40);        /* wait until bus is not busy */
+    *data = I2C3->MDR;              /* store data received */
+    while(I2C3->MCS & 0x40);        /* wait until bus is not busy */
     
     return 0;       /* no error */
 }

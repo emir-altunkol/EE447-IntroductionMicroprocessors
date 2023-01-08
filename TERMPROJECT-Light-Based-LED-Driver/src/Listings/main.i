@@ -3247,7 +3247,11 @@ SCREEN_MAP();
 
 char data[2] = {0x01,0x02};
 I2C3_Init();
-# 148 "main.c"
+
+DELAY50();
+DELAY50();
+DELAY50();
+# 147 "main.c"
  while(1){
 
   for ( i =0; i < 600;i++ ){
@@ -3263,6 +3267,9 @@ I2C3_Init();
   }
   k++;
   AnnounceResult();
+
+  I2C3_read_Multiple(0x39,0x8A,1,DataLow);
+
 
 
  }
