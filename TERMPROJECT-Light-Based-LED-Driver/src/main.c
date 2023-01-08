@@ -72,8 +72,62 @@ unsigned int Command = 0x8C ;//Set Command bit Read Byte Protocol
  unsigned int ch11 = 0;
  
  int luxo = 0;
+ int pot = 0xfB;
 
+void adc_init(void)
+{
+	SYSCTL->RCGCGPIO |= 0x10;
+	__ASM("NOP");
+	__ASM("NOP");
+	__ASM("NOP");
+	while (SYSCTL->PRGPIO == 0);
+	
+	GPIOE->DIR &= 0xFFFFFFF7;
+	GPIOE->AMSEL |= 0x08;
+	GPIOE->AFSEL |= 0x08;
+	
+	GPIOE->DEN |= 0x04;
+	GPIOE->AFSEL &= 0xFFFFFFFB;
+	GPIOE->DIR &= 0xFFFFFFFB;
+		
+	SYSCTL->RCGCADC |= 0x01;
+	__ASM("NOP");
+	__ASM("NOP");
+	__ASM("NOP");
+	while (SYSCTL->PRADC == 0);
+	
+	ADC0->ACTSS &= 0xFFFFFFF7;
+	ADC0->EMUX &= 0xFFFF0FFF;
+	ADC0->SSCTL3 |= 0x06;
+	ADC0->PC |= 0x01;
+	ADC0->ACTSS |= 0x08;
+	ADC0->PSSI |= 0x08;
+	ADC0->ISC |= 0x08;
+}
 
+int data_read(void){
+	int temp;
+	while (1){
+		if (ADC0->RIS & 0x8){
+			temp = ADC0->SSFIFO3;
+			ADC0->ISC |= 0x08;
+			ADC0->PSSI |= 0x08;
+			return temp;
+		}
+	}
+}
+
+int button_pressed(void)
+{
+	if (GPIOE->DATA | 0xFFFFFFFB)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
 
 
 int main (void){
@@ -128,7 +182,10 @@ SCREEN_MAP();
 	//*(background+i) = 0xff;
   *(background+i) = 0x00;
 	}
+//
 		
+
+	
 //----I2C INIT----//
 
 char data[2];
@@ -144,6 +201,8 @@ DELAY50();
 I2C3_Write_Multiple(0x39,0x80,1,0x03);
 DELAY50();
 
+	
+adc_init();
 
 	
 	
@@ -189,6 +248,8 @@ DELAY50();
 		luxo = CalculateLux(0,0,ch00,ch11,0);
 		DELAY50();
 		I2C3_Write_Multiple(0x39,0xC0,1,0x00);
+		
+		pot=data_read();
 
 
 		
