@@ -3169,8 +3169,8 @@ const unsigned char FontThick[60][7] = {
 
 
 void I2C3_Init ( void );
-char I2C3_Write_Multiple(int slave_address, char slave_memory_address, int bytes_count, char* data);
-char I2C3_read_Multiple(int slave_address, char slave_memory_address, int bytes_count, char* data);
+char I2C3_Write_Multiple(int slave_address, char command_code, int bytes_count, char* data);
+char I2C3_read_Multiple(int slave_address, char command_code, int bytes_count, char* data);
 # 40 "main.c" 2
 
 
@@ -3192,6 +3192,15 @@ unsigned char sayilar[84] ;
 static unsigned int i = 0;
 static unsigned int j = 0;
 static unsigned int k = 0;
+
+
+static unsigned int Address = 0x39 ;
+unsigned int Command = 0x8C ;
+unsigned int DataLow = 0;
+unsigned int DataHigh = 0;
+unsigned int Channel0 = 0;
+
+
 
 
 int main (void){
@@ -3218,8 +3227,9 @@ int main (void){
   *(font_adress+i*7+j) = FontThick[i][j];
   }
  }
-# 100 "main.c"
+# 109 "main.c"
 SCREEN_MAP();
+
    for ( i =0; i < 600;i++ ){
   for ( j =0; j < 3000;j++ ){
   __asm("NOP");
@@ -3235,9 +3245,11 @@ SCREEN_MAP();
 
 
 
+char data[2] = {0x01,0x02};
 I2C0_Init();
-# 135 "main.c"
+# 148 "main.c"
  while(1){
+
   for ( i =0; i < 600;i++ ){
   for ( j =0; j < 50;j++ ){
   __asm("NOP");
@@ -3251,5 +3263,7 @@ I2C0_Init();
   }
   k++;
   AnnounceResult();
+
+
  }
 }

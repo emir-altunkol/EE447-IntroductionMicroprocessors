@@ -58,6 +58,15 @@ static unsigned int i = 0;
 static unsigned int j = 0;
 static unsigned int k = 0;
 
+// I2C vairables
+static unsigned int Address = 0x39 ;//Slave addr – also 0x29 or 0x49
+unsigned int Command = 0x8C ;//Set Command bit Read Byte Protocol
+unsigned int DataLow = 0;
+unsigned int DataHigh = 0;
+unsigned int Channel0 = 0;
+
+
+
 
 int main (void){
 	PORTA_SSI0_INIT();
@@ -98,6 +107,7 @@ int main (void){
 //AnnounceResult();
 //_ASM("MOV ");
 SCREEN_MAP();	
+	
 			for (  i =0;  i < 600;i++ ){
 		for ( j =0;  j < 3000;j++ ){
 		__ASM("NOP");
@@ -113,8 +123,11 @@ SCREEN_MAP();
 		
 //----I2C INIT----//
 
+char data[2] = {0x01,0x02};
 I2C0_Init();
-	
+
+
+
 	
 	
 	
@@ -133,6 +146,7 @@ I2C0_Init();
 //
 
 	while(1){
+		//I2C0_Init();
 		for (  i =0;  i < 600;i++ ){
 		for ( j =0;  j < 50;j++ ){
 		__ASM("NOP");
@@ -146,5 +160,7 @@ I2C0_Init();
 		}
 		k++;
 		AnnounceResult();
+		//I2C0_read_Multiple(Address,0x8C,1,DataLow);
+		
 	}
 }
