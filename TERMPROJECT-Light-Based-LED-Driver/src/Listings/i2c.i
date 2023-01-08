@@ -2183,49 +2183,30 @@ typedef struct {
 } UDMA_Type;
 # 2 "i2c.c" 2
 
-static unsigned int Address = 0x39 ;
+
+void I2C3_Init ( void );
+char I2C3_Write_Multiple(int slave_address, char slave_memory_address, int bytes_count, char* data);
+char I2C3_read_Multiple(int slave_address, char slave_memory_address, int bytes_count, char* data);
 
 
 
-void I2C0_Init ( void );
-char I2C0_Write_Multiple(int slave_address, char command_code, int bytes_count, char data);
-char I2C0_read_Multiple(int slave_address, char command_code, int bytes_count, char* data);
-# 35 "i2c.c"
-void I2C0_Init ( void )
+void I2C3_Init ( void )
 {
-((SYSCTL_Type *) 0x400FE000UL)->RCGCI2C |= 0x00000001 ;
+((SYSCTL_Type *) 0x400FE000UL)->RCGCGPIO |= 0x00000008 ;
+((SYSCTL_Type *) 0x400FE000UL)->RCGCI2C |= 0x00000008 ;
+((GPIOA_Type *) 0x40007000UL)->DEN |= 0x03;
 
-((SYSCTL_Type *) 0x400FE000UL)->RCGCGPIO |= 0x00000002 ;
-# 48 "i2c.c"
-((GPIOA_Type *) 0x40005000UL)->ODR |= 0x00000008 ;
-
-
-
-((GPIOA_Type *) 0x40005000UL)->PCTL |= 0x00003300 ;
-
-((I2C0_Type *) 0x40020000UL)->MCR = 0x0010 ;
+((GPIOA_Type *) 0x40007000UL)->AFSEL |= 0x00000003 ;
+((GPIOA_Type *) 0x40007000UL)->PCTL |= 0x00000033 ;
+((GPIOA_Type *) 0x40007000UL)->ODR |= 0x00000002 ;
+((I2C0_Type *) 0x40023000UL)->MCR = 0x0010 ;
 
 
 
 
+((I2C0_Type *) 0x40023000UL)->MTPR = 0x07 ;
 
-
-
-((I2C0_Type *) 0x40020000UL)->MTPR = 0x07 ;
-
-
-DELAY50();
-DELAY50();
-DELAY50();
-DELAY50();
-DELAY50();
-DELAY50();
-DELAY50();
-DELAY50();
-DELAY50();
-DELAY50();
-
-I2C0_Write_Multiple(0x39, 0x80, 1, 0x03);
+I2C3_Write_Multiple(0x39,0x80,1,0x03);
 
 
 }
@@ -2233,19 +2214,19 @@ I2C0_Write_Multiple(0x39, 0x80, 1, 0x03);
 
 static int I2C_wait_till_done(void)
 {
-    while(((I2C0_Type *) 0x40020000UL)->MCS & 1);
-    return ((I2C0_Type *) 0x40020000UL)->MCS & 0xE;
+    while(((I2C0_Type *) 0x40023000UL)->MCS & 1);
+    return ((I2C0_Type *) 0x40023000UL)->MCS & 0xE;
 }
 
-char I2C0_Write_Multiple(int slave_address, char command_code, int bytes_count, char data)
+char I2C3_Write_Multiple(int slave_address, char slave_memory_address, int bytes_count, char* data)
 {
     char error;
     if (bytes_count <= 0)
         return -1;
 
-    ((I2C0_Type *) 0x40020000UL)->MSA = slave_address << 1;
-    ((I2C0_Type *) 0x40020000UL)->MDR = command_code;
-    ((I2C0_Type *) 0x40020000UL)->MCS = 3;
+    ((I2C0_Type *) 0x40023000UL)->MSA = slave_address << 1;
+    ((I2C0_Type *) 0x40023000UL)->MDR = slave_memory_address;
+    ((I2C0_Type *) 0x40023000UL)->MCS = 3;
 
     error = I2C_wait_till_done();
     if (error) return error;
@@ -2253,23 +2234,25 @@ char I2C0_Write_Multiple(int slave_address, char command_code, int bytes_count, 
 
     while (bytes_count > 1)
     {
-        ((I2C0_Type *) 0x40020000UL)->MDR = data;
-        ((I2C0_Type *) 0x40020000UL)->MCS = 1;
+        ((I2C0_Type *) 0x40023000UL)->MDR = *data++;
+        ((I2C0_Type *) 0x40023000UL)->MCS = 1;
         error = I2C_wait_till_done();
         if (error) return error;
         bytes_count--;
     }
 
 
-    ((I2C0_Type *) 0x40020000UL)->MDR = data;
-    ((I2C0_Type *) 0x40020000UL)->MCS = 5;
+    ((I2C0_Type *) 0x40023000UL)->MDR = *data++;
+    ((I2C0_Type *) 0x40023000UL)->MCS = 5;
     error = I2C_wait_till_done();
-    while(((I2C0_Type *) 0x40020000UL)->MCS & 0x40);
+    while(((I2C0_Type *) 0x40023000UL)->MCS & 0x40);
     if (error) return error;
     return 0;
 }
 
-char I2C0_read_Multiple(int slave_address, char command_code, int bytes_count, char* data)
+
+
+char I2C3_read_Multiple(int slave_address, char slave_memory_address, int bytes_count, char* data)
 {
     char error;
 
@@ -2277,28 +2260,28 @@ char I2C0_read_Multiple(int slave_address, char command_code, int bytes_count, c
         return -1;
 
 
-    ((I2C0_Type *) 0x40020000UL)->MSA = slave_address << 1;
-    ((I2C0_Type *) 0x40020000UL)->MDR = command_code;
-    ((I2C0_Type *) 0x40020000UL)->MCS = 3;
+    ((I2C0_Type *) 0x40021000UL)->MSA = slave_address << 1;
+    ((I2C0_Type *) 0x40021000UL)->MDR = slave_memory_address;
+    ((I2C0_Type *) 0x40021000UL)->MCS = 3;
     error = I2C_wait_till_done();
     if (error)
         return error;
 
 
-    ((I2C0_Type *) 0x40020000UL)->MSA = (slave_address << 1) + 1;
+    ((I2C0_Type *) 0x40021000UL)->MSA = (slave_address << 1) + 1;
 
     if (bytes_count == 1)
-        ((I2C0_Type *) 0x40020000UL)->MCS = 7;
+        ((I2C0_Type *) 0x40021000UL)->MCS = 7;
     else
-        ((I2C0_Type *) 0x40020000UL)->MCS = 0xB;
+        ((I2C0_Type *) 0x40021000UL)->MCS = 0xB;
     error = I2C_wait_till_done();
     if (error) return error;
 
-    *data++ = ((I2C0_Type *) 0x40020000UL)->MDR;
+    *data++ = ((I2C0_Type *) 0x40021000UL)->MDR;
 
     if (--bytes_count == 0)
     {
-        while(((I2C0_Type *) 0x40020000UL)->MCS & 0x40);
+        while(((I2C0_Type *) 0x40021000UL)->MCS & 0x40);
         return 0;
     }
 
@@ -2309,13 +2292,13 @@ char I2C0_read_Multiple(int slave_address, char command_code, int bytes_count, c
         error = I2C_wait_till_done();
         if (error) return error;
         bytes_count--;
-        *data++ = ((I2C0_Type *) 0x40020000UL)->MDR;
+        *data++ = ((I2C0_Type *) 0x40021000UL)->MDR;
     }
 
-    ((I2C0_Type *) 0x40020000UL)->MCS = 5;
+    ((I2C0_Type *) 0x40021000UL)->MCS = 5;
     error = I2C_wait_till_done();
-    *data = ((I2C0_Type *) 0x40020000UL)->MDR;
-    while(((I2C0_Type *) 0x40020000UL)->MCS & 0x40);
+    *data = ((I2C0_Type *) 0x40021000UL)->MDR;
+    while(((I2C0_Type *) 0x40021000UL)->MCS & 0x40);
 
     return 0;
 }

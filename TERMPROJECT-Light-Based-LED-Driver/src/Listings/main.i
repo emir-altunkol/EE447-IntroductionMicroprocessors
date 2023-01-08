@@ -3246,7 +3246,7 @@ SCREEN_MAP();
 
 
 char data[2] = {0x01,0x02};
-I2C0_Init();
+I2C3_Init();
 # 148 "main.c"
  while(1){
 
