@@ -2206,7 +2206,7 @@ void I2C3_Init ( void )
 
 ((I2C0_Type *) 0x40023000UL)->MTPR = 0x07 ;
 
-I2C3_Write_Multiple(0x39,0x80,1,0x03);
+
 
 
 }

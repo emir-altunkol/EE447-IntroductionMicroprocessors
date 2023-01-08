@@ -37,6 +37,8 @@
 #include "TM4C123GH6PM.h"
 #include "Nokia5110_fonts.h"
 #include "i2c.h"
+#include "lux.h"
+
 
 
 // Function prototypes
@@ -61,13 +63,15 @@ static unsigned int k = 0;
 // I2C vairables
 static unsigned int Address = 0x39 ;//Slave addr – also 0x29 or 0x49
 unsigned int Command = 0x8C ;//Set Command bit Read Byte Protocol
- char data1 = 0x0003;
- char data2 = 0xFF;
- char data3 = 0xFF;
- char data4 = 0xFF;
+ char data1 = 0xF2;
+ char data2 = 0xF2;
+ char data3 = 0xF2;
+ char data4 = 0xF2;
  
- unsigned int ch0 = 0;
- unsigned int ch1 = 0;
+ unsigned int ch00 = 0;
+ unsigned int ch11 = 0;
+ 
+ int luxo = 0;
 
 
 
@@ -134,12 +138,12 @@ DELAY50();
 DELAY50();
 DELAY50();
 	
+I2C3_Write_Multiple(0x39,0x81,1,0x00);
+DELAY50();
 
 I2C3_Write_Multiple(0x39,0x80,1,0x03);
 DELAY50();
 
-I2C3_Write_Multiple(0x39,0x81,1,0x00);
-DELAY50();
 
 	
 	
@@ -152,10 +156,12 @@ DELAY50();
 	while(1){
 		//I2C0_Init();
 		for (  i =0;  i < 600;i++ ){
-		for ( j =0;  j < 200;j++ ){
+		for ( j =0;  j < 20;j++ ){
 		__ASM("NOP");
 		}
 	}
+		
+	
 		for (  i =1;  i < 84;i++ ){
 		sayilar[(i+k)%84] = (sin(i/4.45/3*4)+6)*20.0;
 		}
@@ -164,17 +170,26 @@ DELAY50();
 		}
 		k++;
 		AnnounceResult();
+	
+	
 		//I2C3_Write_Multiple(0x39,0x80,1,0x03);
 		I2C3_read_Multiple(0x39,0x8C,1,data1);
+	DELAY50();
 		I2C3_read_Multiple(0x39,0x8D,1,data2);
-		
-		ch0 = data2*256 + data1;
+		DELAY50();
+		ch00 = data2*256 + data1;
 		
 		
 		I2C3_read_Multiple(0x39,0x8E,1,data3);
+		DELAY50();
 		I2C3_read_Multiple(0x39,0x8F,1,data4);
+		DELAY50();
+		ch11 = data4*256 + data3;
 		
-		ch1 = data4*256 + data3;
+		luxo = CalculateLux(0,0,ch00,ch11,0);
+		DELAY50();
+		I2C3_Write_Multiple(0x39,0xC0,1,0x00);
+
 
 		
 		//I2C0_read_Multiple(Address,0x8C,1,DataLow);

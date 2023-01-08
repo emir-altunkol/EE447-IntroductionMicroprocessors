@@ -23,7 +23,7 @@ I2C3->MCR  = 0x0010 ; // Enable I2C 3 master function
 TIME_PERIOD = 16 ,000 ,000/(2(6+4) *100000) - 1 = 7 */
 I2C3->MTPR  = 0x07 ;
 	
-I2C3_Write_Multiple(0x39,0x80,1,0x03);
+//I2C3_Write_Multiple(0x39,0x80,1,0x03);
 	
 
 }

@@ -5,7 +5,11 @@
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
 # 1 "lux.c" 2
-# 143 "lux.c"
+# 15 "lux.c"
+# 1 "./lux.h" 1
+extern unsigned int CalculateLux(unsigned int iGain, unsigned int tInt, unsigned int ch0, unsigned int ch1, int iType);
+# 16 "lux.c" 2
+# 146 "lux.c"
 unsigned int CalculateLux(unsigned int iGain, unsigned int tInt, unsigned int ch0,
 unsigned int ch1, int iType)
 {

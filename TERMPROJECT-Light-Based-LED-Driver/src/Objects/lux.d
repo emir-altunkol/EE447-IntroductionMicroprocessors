@@ -1,1 +1,1 @@
-./objects/lux.o: lux.c
+./objects/lux.o: lux.c lux.h

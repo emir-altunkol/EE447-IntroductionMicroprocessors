@@ -459,6 +459,11 @@
               <FileType>1</FileType>
               <FilePath>.\lux.c</FilePath>
             </File>
+            <File>
+              <FileName>lux.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lux.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
